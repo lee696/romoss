@@ -1,0 +1,24 @@
+<tr data-id="{$vo.user_id}" data-order="{$vo.order}">
+    <td class="am-text-middle"><input type="checkbox" class="check-tail"></td>
+   
+    <td class="am-text-middle">{$vo.phone}</td>
+     <td class="am-text-middle">
+        <img src="{$vo.avatar}" style="width: 80px;height: 80px;"/>
+    </td>
+    <td class="am-text-middle">{$vo.nickname}</td>
+    <td class="am-text-middle">{:formatTime($vo['create_time'])}</td>
+    <td class="am-text-middle">{$vo.birthday}</td>
+    <td class="am-text-middle">
+        <div class="am-btn-toolbar">
+            <div class="am-btn-group am-btn-group-xs">
+                <a class="am-btn am-btn-default am-btn-xs" href="{:U('info', ['user_id' => $vo['user_id']])}">编辑</a>
+            </div>
+<!--            <div class="am-btn-group am-btn-group-xs">
+                <a class="am-btn am-btn-default am-btn-xs btn-move" data-move="up" href="javascript:">上移</a>
+            </div>-->
+<!--            <div class="am-btn-group am-btn-group-xs">
+                <a class="am-btn am-btn-default am-btn-xs btn-move" data-move="down" href="javascript:">下移</a>
+            </div>-->
+        </div>
+    </td>
+</tr>

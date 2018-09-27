@@ -1,0 +1,128 @@
+<extend name="Public:base"/>
+<block name="main">
+    <div class="header-panel">
+        <a href="javascript:goback()" class="go-back"></a>
+        <div>商品</div>
+<!--         <div>详情</div>
+        <div>评价</div> -->
+
+    </div>
+    <a class="fixed-bottom-btn to-buy" href="javascript:">立即购买</a>
+    <div class="page-panel padding-header padding-footer">
+        <div id="slide-box" class="container-banner">
+            <ul class="slide-panel">
+                <volist name="sku" id="vo">
+                    <li><a href="javascript:" style="background-image:url({$vo.img})" title="{$vo.sku_name}"></a></li>
+                </volist>
+            </ul>
+            <div class="bd">
+                <ul class="slide-point">
+                    <volist name="sku" id="vo">
+                        <li></li>
+                    </volist>
+                </ul>
+            </div>
+        </div>
+        <div class="goods-desc">
+            <p class="title"><b>[罗马仕名称]</b> {$info.goods_name}</p>
+            <div class="price-con">
+                ￥<span class="font-big">{$info.price}</span>
+                <s>￥{$info.market_price}</s>
+                <span class="floatr">月销量：{$info.sale_num}</span>
+            </div>
+            <div class="shipping-con text-right">
+                <if condition="$info['shipping_fee']">
+                    邮费：￥{$info.shipping_fee}
+                    <else/>
+                    包邮
+                </if>
+            </div>
+        </div>
+        <div class="comment-panel">
+            <div class="title-con">
+                <h2 class="module-title">用户评价 ({$sum})</h2>
+            </div>
+            <div class="module-cont">
+              <volist name="list" id="vo">
+                <div class="module-main">
+                  
+                    <div class="u-img"><empty name="vo.avatar"><img src="../../../static/wx/images/default_avatar.png"/><else /><img src="{$vo.avatar}"/> </empty> </div>
+                    
+                    <div class="module-utit">
+                        <div>{$vo.nickname}</div>
+                        <div class="module-star">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <p class="module-ptime"></p>
+                    </div>
+                    <p>{$vo.content}</p>
+                    <div class="pj-imgs clr">
+<!--                        <div><img src="../../../static/wx/images/test003.png"/></div>
+                        <div><img src="../../../static/wx/images/test004.png"/></div>
+                        <div><img src="../../../static/wx/images/test005.png"/></div>-->
+
+                    </div>
+                </div>
+              </volist>
+
+              <div class="pj-more"><a href="{:U('Goods/details',array('goods_id'=>$info['goods_id']))}">查看更多评论</a></div>
+            </div>
+            <!---     <if condition="$comment_list">
+            <volist name="comment_list" id="comment">
+            <!---        </volist>
+                 <else/>
+                 该商品暂无评价
+             </if>           ---->
+        </div>
+        <div class="relation-panel">
+            <h2 class="module-title">相关推荐</h2>
+            <div class="relation-goods">
+                <volist name="relation_goods" id="goods">
+                    <a href="{:U('Goods/index', ['goods_id' => $goods['goods_id']])}">
+                        <div class="goods-tail">
+                            <img class="img" src="{$goods.goods_img}" alt="{$goods.goods_name}" title="{$goods.goods_name}">
+                            <div class="title">{$goods.goods_name}</div>
+                            <div class="price-con">
+                                ￥{$goods.price}
+                            </div>
+                        </div>
+                    </a>
+                </volist>
+            </div>
+        </div>
+    </div>
+    <div class="sku-confirm-box">
+        <div class="shadow-model"></div>
+        <div class="sku-confirm">
+            <div class="goods-detail">
+                <div class="img" style="background-image: url({$sku[0]['img']})"></div>
+                <div class="title text-overflow">{$info.goods_name}<i class="close"></i></div>
+                <div class="price">￥{$info.price}</div>
+                <div class="sku-num">库存：{$info.total_num}</div>
+            </div>
+            <div class="goods-sku">
+                <div class="title">规格：</div>
+                <div class="sku-item">
+                    <volist name="sku" id="vo">
+                        <a data-sku="{$vo.sku}" data-img="{$vo.img}" data-num="{$vo.sku_num}">{$vo.sku_name}</a>
+                    </volist>
+                </div>
+            </div>
+            <div class="num-controller">
+                数量：<a class="dec lock" href="javascript:">-</a><input type="tel" value="1" class="num"><a class="inc lock" href="javascript:">+</a>
+            </div>
+            <a class="bottom-btn lock buy-soon" href="javascript:">提交</a>
+        </div>
+    </div>
+</block>
+<block name="js-con">
+    <script src="__WX_JS__/TouchSlide.js"></script>
+    <script>
+        var _buy_soon = "{:U('Order/buySoon')}";
+    </script>
+    <script src="__WX_JS__/goods.js?__T__"></script>
+</block>

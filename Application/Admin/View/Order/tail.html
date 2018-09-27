@@ -1,0 +1,46 @@
+<tr data-id="{$vo.goods_id}" data-order="{$vo.order}">
+    <td class="am-text-middle">{$vo.order_num}</td>
+    <td class="am-text-middle">
+        <div class="row-line">
+            <div class="img">
+                <img src="{$vo.img}" style="width: 80px;height: 80px;"/>
+            </div>
+            <div class="title">{$vo.goods_name}</div>
+        </div>
+
+    </td>
+    
+    <td class="am-text-middle">{$vo.goods_num}</td>
+    <td class="am-text-middle">{$vo.price}</td>
+    <td class="am-text-middle">{$vo.shipping_fee}</td>
+    
+    <td class="am-text-middle">
+        <volist name="con" id="v">
+            <eq name="v.user_id" value="$vo.user_id">{$v.consignee}</eq>
+        </volist>
+    </td>
+    
+    <td class="am-text-middle">{:formatTime($vo['create_time'])}</td>
+    <td class="am-text-middle">
+       <switch name="vo.status" >
+                        <case value="1">未付款</case>
+                        <case value="2">已付款</case>
+                        <case value="3">已发货</case>
+                        <case value="4">已收货</case>
+                        <case value="5">已取消</case>
+                        <case value="6">已评价</case>
+                        <default />未知
+                        </switch>
+    </td>
+    <td class="am-text-middle">
+        <div class="am-btn-toolbar">
+            <div class="am-btn-group am-btn-group-xs">
+              <a class="am-btn am-btn-default am-btn-xs" href="{:U('info', ['order_id' => $vo['order_id']])}">详情</a>
+               
+            </div>
+          <div class="am-btn-group am-btn-group-xs">
+             <eq name="vo.status" value="2"><a class="am-btn am-btn-default am-btn-xs" href="{:U('send', ['order_id' => $vo['order_id']])}">发货</a></eq>
+          </div>
+        </div>
+    </td>
+</tr>

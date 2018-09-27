@@ -1,0 +1,54 @@
+<extend name="Public:base" />
+<block name="main">
+    <style>
+        .succeed-box{background:#f3f5f9; }
+        .succeed-box .succeed-tit{margin-bottom: 1rem;position: relative;padding:2.5rem 0 3rem 8.9rem;font-size: 1.5rem;color:#fff; background-color: #31a9ff;background: -webkit-linear-gradient(left, #31a9ff, #2bd0ff);background: -o-linear-gradient(right, #31a9ff, #2bd0ff);background: -moz-linear-gradient(right, #31a9ff, #2bd0ff);background: linear-gradient(to right, #31a9ff, #2bd0ff);}
+        .succeed-box .succeed-tit i{position:absolute;top:3.5rem;left:2.5rem;display: block;width:4.15rem;height:4.15rem;background:url(../../../static/wx/images/suss.png)no-repeat;background-size:100% 100%;}
+        .succeed-box .succeed-tit h4{font-size:2rem;color: #fff;text-align: left;}
+        .succeed-box .succeed-tit p{font-size:1.3rem;color:#fff;text-align: left;}
+        .succeed-box .succeed-info{background: #fff;padding: 0 2.22rem 0 2.5rem;}
+        .succeed-box .succeed-info .rec-info{padding:2rem 0 2.25rem 0;border-bottom: 1px #d7d7d7 solid; }
+        .succeed-box .succeed-info .rec-info h4{font-size:1.6rem;color: #414d58;}
+        .succeed-box .succeed-info .rec-info p{font-size:1.3rem;color:#414d58;}
+        .succeed-box .succeed-info .rec-info div span{display: block;font-size: 1.3rem;color: #414d58;}
+        .succeed-box .succeed-info .rec-info div .addr{float: left;}
+        .succeed-box .succeed-info .rec-info div .addr-cont{float: right;width: 25.8rem;}
+        .succeed-box .succeed-info .pay-info{padding:2.5rem 0; }
+        .succeed-box .order_detl{width: 25rem;height: 4rem;line-height: 4rem;background: #20b7f4;text-align: center;border-radius:3rem;margin: 3.5rem auto 1.5rem auto;}
+        .succeed-box .continue{width: 25rem;height: 4rem;line-height: 4rem;border: 1px #ed5f86 solid;text-align: center;border-radius:3rem;margin: 0 auto 0 auto;}
+    </style>
+    <div class="header-panel">
+        <a href="{:U('Index/index')}" class="go-back"></a>支付完成
+    </div>
+    <div class="succeed-box" style='margin-top: 3.5rem'>
+        <div class="succeed-tit">
+            <i></i>
+            <h4>支付成功!</h4>
+            <p>将尽快为您安排发货</p>
+        </div>
+
+        <div class="succeed-info">
+            <div class="rec-info">
+                <h4>收货人：{$info.consignee}</h4>
+                <p>联系电话：{$info.phone}</p>
+                <div class="clr">
+                    <span class="addr">收货地址：</span> <span class="addr-cont">{$info.address}</span>
+                </div>
+
+            </div>
+            <div class="pay-info">
+                <p>支付方式：微信支付</p>
+                <p>实付金额：<span>￥{$info.price}</span></p>
+            </div>
+        </div>
+      <div class="order_detl"><a href="{:U('Order/details',array('oid'=>$_GET['oid']))}">订单详情</a></div>
+        <div class="continue"><a href="{:U('Index/index')}">继续逛逛</a></div>
+    </div>
+</block>
+<block name="js-con">
+    <script>
+        $(function () {
+
+        });
+    </script>
+</block>

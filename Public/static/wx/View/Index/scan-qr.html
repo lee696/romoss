@@ -1,0 +1,35 @@
+<extend name="Public:base" />
+<block name="main">
+    <style>
+
+        .scan_box{ background: rgba(0,0,0,0.6);position: fixed;top:3.5rem;left:0;width:100%; height:100%;z-index:999;}
+        .scan_box .scan_box_cont{margin-top:25%;margin-left:16.5%;background:#fff;width:25.1rem; height:25.1rem;}
+        .scan_box p{font-size:1.3rem;margin-top:3.2rem;text-align: center;color:rgba(255, 255, 255, 0.8); }
+        .scan_box span{position: absolute;display:block;box-sizing:border-box;width:1.75rem ;height:1.75rem;}
+        .scan_box .corner1{top:13.5%;left:15.5%;border-top:0.2rem #31a9ff solid;border-left:0.2rem #31a9ff solid;}
+        .scan_box .corner2{top:13.5%;right:15.5%;border-top:0.2rem #31a9ff solid;border-right:0.2rem #31a9ff solid;}
+        .scan_box .corner3{top:49.7%;left:15.5%;border-bottom:0.2rem #31a9ff solid;border-left:0.2rem #31a9ff solid;}
+        .scan_box .corner4{top:49.7%;right:15.5%;border-bottom:0.2rem #31a9ff solid;border-right:0.2rem #31a9ff solid;}
+    </style>
+    <div class="header-panel">
+        <a href="javascript:goback()" class="go-back"></a>扫一扫
+    </div>
+    <div class='scan_box' >
+        <span class="corner1"></span>
+        <span class="corner2"></span>
+        <span class="corner3"></span>
+        <span class="corner4"></span>
+        <div class="scan_box_cont">
+
+        </div>
+        <p>将二维码/条码放入框内，即可自动扫描</p>
+    </div>
+</block>
+<block name="js-con">
+    <script>
+        $(function () {
+
+
+        });
+    </script>
+</block>

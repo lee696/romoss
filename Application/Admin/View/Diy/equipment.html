@@ -1,0 +1,149 @@
+<extend name="Public:base"/>
+<block name="local-title">
+    <li>
+        <a href="{:U('index')}">质材</a>
+    </li>
+    <li>列表</li>
+</block>
+<block name="main">
+    <form class="am-g am-form am-line-label am-padding-top" id="search-form" action="" method="get">
+        <label>
+            <span>添加时间：</span>
+            <input type="text" name="start_time" value="{:I('start_time')}" readonly>
+            ~
+            <input type="text" name="end_time" value="{:I('end_time')}" readonly>
+        </label>
+        <label>
+            <span>标题：</span>
+            <input type="text" value="{:I('title')}" name="title">
+        </label>
+        <input type="submit" value="查询" class="am-btn am-btn-default am-radius am-btn-xs">
+    </form>
+    <div class="am-g am-padding-top">
+        <!--<a href="{:U('addequipment')}" class="am-btn am-btn-primary am-radius am-btn-xs"><span class="am-icon-plus"></span> 新增</a>-->
+        <!--<a href="javascript:" class="am-btn am-btn-default am-radius am-btn-xs btn-del"><span class="am-icon-plus"></span> 删除</a>-->
+    </div>
+    <hr>
+    <div class="am-g">
+        <div class="am-u-sm-12">
+            <table class="am-table am-table-striped am-table-hover table-main">
+                <thead>
+                <tr>
+                    <th><input type="checkbox" class="check-all"></th>
+                    <th>图片</th>
+                    <th>装备类型</th>
+                    <!--<th>添加时间</th>-->
+                    <th>装备价格</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <foreach name="list" item="vo">
+                        <include file="equipmenttail"/>
+                    </foreach>
+                </tbody>
+            </table>
+            <div class="am-cf">
+                共 {$total} 条记录
+                <div class="am-fr">{$pageHtml}</div>
+            </div>
+        </div>
+    </div>
+</block>
+<block name="css-con">
+    <link rel="stylesheet" href="__AMAZEUI__/css/amazeui.datetimepicker.css">
+</block>
+<block name="js-con">
+    <script src="__AMAZEUI__/js/amazeui.datetimepicker.min.js"></script>
+    <script src="__AMAZEUI__/js/date-zh.js"></script>
+    <script>
+        $(function(){
+            $('[name=is_on]').val({:I('is_on')});
+
+            var dataFormat = {
+                format: 'yyyy-mm-dd',
+                minView : 'month',
+                language:  'zh-CN'
+            };
+            var $start_time = $('[name=start_time]');
+            var $end_time = $('[name=end_time]');
+            $start_time.add($end_time).datetimepicker(dataFormat);
+            $start_time.datetimepicker().on('changeDate', function(){
+                $end_time.datetimepicker('setStartDate', $start_time.val());
+                $start_time.datetimepicker('hide');
+            });
+            $end_time.datetimepicker().on('changeDate', function(){
+                $start_time.datetimepicker('setEndDate', $end_time.val());
+                $end_time.datetimepicker('hide');
+            });
+            // 表单
+            $('#search-form').submit(function(){
+                var sd = [];
+                $(this).serializeArray().forEach(function(data){
+                    if(data.value){
+                        sd.push(data.name + '=' + data.value);
+                    }
+                });
+                location.href = '?' + sd.join('&');
+                return false;
+            });
+            // 全选
+            var $checkAll = $('.check-all');
+            var $checkTail = $('.check-tail');
+            $checkAll.click(function(){
+                $checkTail.prop('checked', $checkAll.prop('checked'));
+            });
+            // 删除
+            $del = $('.btn-del');
+            $del.click(function(){
+                var $checked = $checkTail.filter(':checked');
+                if($checked.length == 0){
+                    layer.msg('未选中任何目标');
+                    return false;
+                }
+                var _checked = [];
+                $checked.each(function(){
+                    _checked.push(parseInt($(this).closest('tr').attr('data-id')));
+                    $.post('{:U('delmaterial')}', {id : _checked}, function(res){
+                       doAjax(res, function(){
+                           layer.msg('已删除');
+                           location.reload();
+                       });
+                    });
+                })
+            });
+            // 移动
+            $('body').delegate('.btn-move', 'click', function(){
+                var $dom = $(this).closest('tr');
+                switch ($(this).attr('data-move')){
+                    case 'up':
+                        $target = $dom.prev();
+                        break;
+                    case 'down':
+                        $target = $dom.next();
+                        break;
+                    default:
+                        return false;
+                }
+                if($target.length == 0){
+                    return false;
+                }
+                moveExchange($dom, $target);
+            });
+        });
+        function moveExchange($dom, $target){
+            var slide_order = {};
+            slide_order[$dom.attr('data-id')] = $target.attr('data-order');
+            slide_order[$target.attr('data-id')] = $dom.attr('data-order');
+            $.post('{:U('setMulOrder')}', {slide_order : slide_order}, function(res){
+                doAjax(res, function(){
+                    var _targetOrder = $target.attr('data-order');
+                    $target.attr('data-order', $dom.attr('data-order'));
+                    $dom.attr('data-order', _targetOrder);
+                    $dom.after($target.clone()).remove();
+                    $target.after($dom.clone()).remove();
+                });
+            });
+        }
+    </script>
+</block>

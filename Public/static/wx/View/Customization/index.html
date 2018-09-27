@@ -1,0 +1,359 @@
+<extend name="Public:base"/>
+<block name="main">
+    <div class="custom_bg">
+        <div class="header-panel">
+            <a href="javascript:goback()" class="go-back"></a>
+            <a href="#" id='buyorder' class="buy">购买</a>
+            <a href="#" id="tophonemodel">请选择型号</a>
+        </div>
+        <div class="custom_box">
+            <div class="custom_cont">
+                <div class="goods_cont">
+                    <ul id="color_sele" class="color_box">
+                      <li >银</li>
+                        <li >红</li>
+                        <li >黄</li>
+                        <li >蓝</li>
+                        <li >绿</li>
+                        <li >紫</li>
+                        <li >灰</li>
+                        <li >金</li>
+                    </ul>
+                    <sapn class="goods_price">¥&nbsp100+&nbsp¥&nbsp99</sapn>
+                    <div class="delete_bt"></div>
+                    <div class="eye_bt"></div>
+                    <div class="goods_img">
+                        <img src="../static/wx/images/goods.png"/>
+                    </div>
+
+                    <!-----玩转图片首页------>
+                    <div class="play_photo">
+                        <div class="photo_main">
+                            <div>
+                                <img src="../static/wx/images/photo.png" />
+                                <span>相册</span>
+                            </div>
+                            <div>
+                                <img src="../static/wx/images/file.png" />
+                                <span>素材</span>
+                            </div>
+                            <div>
+                                <img src="../static/wx/images/smile.png" />
+                                <span>贴纸</span>
+                            </div>
+                            <div>
+                                <img src="../static/wx/images/texts.png" />
+                                <span>文字</span>
+                            </div>
+                        </div>
+
+                        <!-----玩转图片二级菜单------>
+
+                        <div class="photo_items_type none" >
+                            <div class="photo_items none ">
+                                <div class="potos-mor">
+                                    <a href="{:U('Customization/photos')}">
+                                        <img src="../static/wx/images/photo.png" />
+                                        <span>相册</span>
+                                    </a>
+                                </div>
+                                <ul>
+                                    <li class="iphoto">
+                                        <img src="../static/wx/images/test001.png" />
+                                    </li>
+                                    <li class="iphoto">
+                                        <img src="../static/wx/images/test002.jpg" />
+                                    </li>
+                                </ul>
+                                <div class="empty">
+                                    <img src="../static/wx/images/delete.png" />
+                                    <span>清除</span>
+                                </div>
+                            </div>
+
+                            <div class="photo_items ">
+                                <div class="potos-mor">
+                                    <a href="{:U('Customization/materials')}">
+                                        <img src="../static/wx/images/photo.png" />
+                                        <span>更多</span>
+                                    </a>
+                                </div>
+                                <ul>
+                                    <volist name="cmpicture" id="vom">
+                                    <li class="iphoto" id="sucai" >
+                                      <img src="{$vom.pic}" onclick="getsucai({$vom.id});" />
+                                    </li> 
+                                  </volist>
+                                </ul>
+                                <div class="empty">
+                                    <img src="../static/wx/images/delete.png" />
+                                    <span>清除</span>
+                                </div>
+                            </div>
+
+                            <div class="photo_items ">
+                                <div class="potos-mor">
+                                    <a href="{:U('Customization/stickers')}">
+                                        <img src="../static/wx/images/photo.png"  />
+                                        <span>贴纸</span>
+                                    </a>
+                                </div>
+                                <ul>
+                                  <volist name="sticker" id="vos">
+                                    <li class="iphoto">
+                                        <img src="{$vos.pic}"  onclick="gettiezhi({$vos.id});"/>
+                                    </li> 
+                                  </volist>
+                                   
+                                </ul>
+                                <div class="empty">
+                                    <img src="../static/wx/images/delete.png" />
+                                    <span>清除</span>
+                                </div>
+                            </div>
+
+                            <div class="photo_items ">
+                                <div class="potos-mor">
+                                        <img src="../static/wx/images/texts.png" />
+                                        <span>文字</span>
+                                </div>
+                                <ul>
+                                  <textarea id="wenzi" name="font" style="margin: 0px;width: 196px; height: 85px;resize:none;border: 1px solid;" ></textarea>
+                                </ul>
+                              <div class="empty" onclick="emptyfont();">
+                                    <img src="../static/wx/images/delete.png" />
+                                    <span>清除</span>
+                                </div>
+                            </div>
+                            <span class="p-back"></span>
+                        </div>
+                    </div>
+                    <!-----玩转材质首页------>
+                    <div class="play_materials none ">
+                        <!-----玩转材质首页材质类型------>
+                        <div id="mater-type" class="materials_main">
+                          <volist name="materialtype" id="vo">
+                            <div class="material_type m-type" data-id="{$vo.id}"><img src="{$vo.pic}" /><span>{$vo.name}</span></div>
+                          </volist>
+                           
+<!--                            <div class="material_type m-type"><img src="../static/wx/images/test007.png"/><span>木</span></div>
+                            <div class="material_type m-type"><img src="../static/wx/images/test008.png"/><span>布</span></div>
+                            <div class="material_type m-type"><img src="../static/wx/images/test009.png"/><span>碳纤</span></div>-->
+                        </div>
+                        <!-----玩转材质首页不同材质类型分级------>
+                        <div id="mater-type-cont" class="type-cont none">
+                            <div class="none" id="mater">
+                            </div>
+
+                            <span class="mt-back"></span>
+                        </div>
+
+                    </div>
+
+                    <!-----玩转装备首页------>
+                    <div id="p_parts" class="play_parts none">
+                      <div  onclick="equipment(1);">充电宝</div>
+                        <div onclick="equipment(2);">充电扩容</div>
+                        <div onclick="equipment(3);">蓝牙</div>
+                       
+                    </div>
+                </div>
+              <form action="{:U('Order/buydiy')}" id='diybuy' method="post">
+                 <input type="hidden" name="material" id="material" value=""/>
+                             <input type="hidden" name="phonemodel" id="phonemodel"  value=""/>
+                              <input type="hidden" name="equipment" id="equipment" value=""/>
+                              <input type="hidden" name="colour" id="colour" value=""/>
+                               <input type="hidden" name="cmpicture" id="cmpicture" value=""/>
+                               <input type="hidden" name="sticker" id="sticker" value=""/>
+              </form>
+
+                <div class="footer_bt">
+                    <div id="f_button" class="bt_box">
+                        <div class="act_bt">玩图片</div>
+                        <div>玩材质</div>
+                        <div>玩装备</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</block>
+
+<block name="js-con">
+    <script>
+      var phonemodel =$('#phonemodel').val();//型号
+      var equipmentd =$('#equipment').val();//装备
+      var materiald =$('#material').val();//材质
+      var colour =$('#colour').val();//颜色
+      var cmpicture =$('#cmpicture').val();//图片
+      var sticker =$('#sticker').val();//贴纸
+      var font =$('#wenzi').val();//文字
+    wx.config({
+        debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+        appId: '{$JsTicket.appid}', // 必填，公众号的唯一标识
+        timestamp: '{$JsTicket.timestamp}', // 必填，生成签名的时间戳
+        nonceStr: '{$JsTicket.noncestr}', // 必填，生成签名的随机串
+        signature: '{$JsTicket.signature}',// 必填，签名，见附录1
+        jsApiList: ['chooseImage'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+    });
+    wx.ready(function() {
+        
+    });
+    wx.error(function(res) {
+        alert(res.errMsg);
+    });
+      function equipment(id){
+        $('#equipment').val(id);
+      }
+      function emptyfont(){
+        $("#wenzi").val('');
+      }
+       function material(id){
+        $('#material').val(id);
+      }
+      function getsucai(id){
+        $('#cmpicture').val(id);
+      }
+      function gettiezhi(id){
+        $('#sticker').val(id);
+      }
+        $(function () {
+            /******颜色选择代码******/
+            $("#color_sele li").click(function () {
+                var it = $(this);
+                it.addClass("color_act").siblings().removeClass("color_act");
+            });
+            $("#color_sele li").click(function () {
+                var a = $(this).text();
+                $('#colour').val(a);
+            });
+            $('#buyorder').click(function(){
+              document.getElementById("diybuy").submit();
+            });
+
+            /******玩转图片二级菜单代码******/
+            $(".photo_main>div").click(function () {
+                 var index = $(this).index();
+                 $(".photo_main").hide();
+                 $(".photo_items_type").show();
+                 $(".photo_items_type>div").eq(index).show().siblings().hide().last().show();
+                var images = {
+                    localId: [],
+                    serverId: []
+                };
+                wx.chooseImage({
+                    count: 1, // 默认9
+                    sizeType: ['compressed'], // 可以指定是原图还是压缩图，默认二者都有
+                    sourceType: ['album'], // 可以指定来源是相册还是相机，默认二者都有
+                    success: function(res) {
+                        var localIds = res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
+                        wx.uploadImage({
+                            localId: localIds.toString(), // 需要上传的图片的本地ID，由chooseImage接口获得
+                            isShowProgressTips: 1, // 默认为1，显示进度提示
+                            success: function(res) {
+                                var serverId = res.serverId; // 返回图片的服务器端ID
+                                console.log(serverId);
+                                alert(serverId);
+                                // 因为上传图片到微信服务器上只能保存3天，需要加个接口，发送图片serverId给服务端，服务端去微信服务器拉回图片保存到服务器，并返回图片的http链接
+                                // 参考:http://mp.weixin.qq.com/wiki/12/58bfcfabbd501c7cd77c19bd9cfa8354.html 下载多媒体文件
+                                // 参数serverId
+                                // 返回图片在服务器上的永久http地址
+                                // meService.weixinImg.query({
+                                //     mediaId: serverId
+                                // }, function(data) {
+                                //     meService.modifyHead.query({
+                                //         userId: $rootScope.userinfo.userId,
+                                //         userLogo: data.data
+                                //     }, function(data) {
+                                //         if(data.code == 200) {
+                                //             var alertPopup = $ionicPopup.show({
+                                //                 cssClass: 'er-popup',
+                                //                 template: '修改成功',
+                                //                 buttons: [{
+                                //                     text: '确定',
+                                //                     type: 'button-assertive'
+                                //                 }]
+                                //             });
+                                //             personalIcon();
+                                //         }
+                                //         console.log(data);
+                                //     })
+                                // })
+                            }
+                        });
+                    }
+                });
+            });
+             $(".p-back").click(function () {
+                 $(".photo_items_type").hide();
+                 $(".photo_main").show();
+             });
+
+             $("#tophonemodel").click(function () {
+            location.href = "{:U('Customization/typeof')}?equipment="+equipmentd + '&material=' + materiald+'&colour='+colour+'&cmpicture='+cmpicture+'&sticker='+sticker+'&font='+font;
+        });
+        //      $("#tophonemodel").click(function () {
+        //     var redirect = "{:U('buySoon', '', true, true)}?sku=" + _sku + '&num=' + _num;
+        //     location.href = "{:U('Address/index','',true,true)}?redirect=" + encodeURIComponent(redirect) + '&address_id=' + _address_id;
+        // });
+
+            /******玩转材质切换二级菜单代码******/
+            $("#mater-type>div").click(function () {
+                var index = $(this).attr('data-id');
+                $("#mater-type").hide();
+                
+                console.log($("#mater-type-cont"));
+                   $.post("{:U('Customization/material')}", {pid: index}, function (res) {
+                doAjax(res, function () {
+					console.log(res);
+           $("#mater").empty();
+          for(var i=0;i<res.data.length;i++){
+            $("#mater").append("<div onclick='material("+res.data[i].id+");'><img src='"+res.data[i].pic+"'/><span>"+res.data[i].name+"</span></div>");
+          }
+          $("#mater-type-cont").show();
+//					alert('创建订单成功,等待微信商户授权后正式支付！');
+//					location.href = "{:U('Order/paytype')}?oid="+res.data;
+                    //layer.msg('启动支付接口失败...');
+                });
+            });
+                $("#mater-type-cont>div").show();
+            });
+            $(".mt-back").click(function () {
+                $("#mater-type-cont").hide();
+                $("#mater-type").show();
+            })
+
+            /******玩转装备切换二级菜单代码******/
+            $("#p_parts>div").click(function () {
+                var it = $(this);
+                it.addClass("act_parts").siblings().removeClass("act_parts");
+            })
+
+
+
+
+            /******底部菜单切换代码******/
+            $("#f_button div").click(function () {
+                var it = $(this);
+                var index = it.index();
+                it.addClass("act_bt").siblings().removeClass("act_bt");
+                if (index == 0) {
+                    $(".play_parts").hide();
+                    $(".play_materials").hide();
+                    $(".play_photo").show();
+
+                } else if (index == 1) {
+                    $(".play_parts").hide();
+                    $(".play_photo").hide();
+                    $(".play_materials").show();
+                } else if (index == 2) {
+                    $(".play_materials").hide();
+                    $(".play_photo").hide();
+                    $(".play_parts").show();
+                }
+            });
+        });
+
+    </script>
+
+</block>

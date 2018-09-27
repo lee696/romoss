@@ -1,0 +1,20 @@
+<tr data-id="{$vo.rule_id}" data-order="{$vo.order}">
+    <td class="am-text-middle"><input type="checkbox" class="check-tail"></td>
+    <td class="am-text-middle">{$key+1}</td>
+    <td class="am-text-middle">{$vo.rule_name}</td>
+    <td class="am-text-middle">{$vo.rule_module}/{$vo.rule_controller}/{$vo.rule_action}</td>
+    <td class="am-text-middle"><if condition="$vo['status'] eq 1">启用<else/>禁用</if></td>
+    <td class="am-text-middle">
+        <div class="am-btn-toolbar">
+            <div class="am-btn-group am-btn-group-xs">
+                <a class="am-btn am-btn-default am-btn-xs" href="{:U('Rule/edit', ['rule_id' => $vo['rule_id']])}">编辑</a>
+            </div>
+<!--            <div class="am-btn-group am-btn-group-xs">
+                <a class="am-btn am-btn-default am-btn-xs btn-move" data-move="up" href="javascript:">上移</a>
+            </div>-->
+<!--            <div class="am-btn-group am-btn-group-xs">
+                <a class="am-btn am-btn-default am-btn-xs btn-move" data-move="down" href="javascript:">下移</a>
+            </div>-->
+        </div>
+    </td>
+</tr>

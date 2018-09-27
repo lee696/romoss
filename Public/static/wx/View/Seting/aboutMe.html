@@ -1,0 +1,53 @@
+<extend name="Public:base" />
+<block name="main">
+    <style>
+        .member-box{margin-top: 3.5rem;}
+        .about{
+            width: 100%;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        .about img{
+            width: 10rem;
+        }
+        .about p{
+            margin-bottom: 4rem;
+        }
+        .about div{
+            text-align: left;
+            font-size: 1.6rem;
+        }
+        .end{
+            position: fixed;
+            bottom: 3rem;
+            width: 100%;
+            text-align: center;
+            font-size: 1.2rem;
+            color:#d7d7d7;
+        }
+        .end p{
+            height: 2rem;
+        }
+    </style>
+    <div class="header-panel">
+        <a href="javascript:goback()" class="go-back"></a>
+        关于我们
+    </div>
+    <div class="member-box">
+        <div class='about'>
+            <img src="__WX_IMG__/logo.png" alt="罗马仕" title="罗马仕"/>
+            <p>美创优品1.0<p>
+            <div>美创优品是国内一流的服装销售连锁店，全国拥有1000家店铺，销售品牌多达500中，致力于为消费者提供便捷，高质的服饰购买体验。</div>
+        </div>
+        <div class='end'>
+            <p>法律信息</p>
+            <p>版权信息</p>
+        </div>
+    </div>
+</block>
+<block name="js-con">
+    <script>
+        $(function () {
+        });
+    </script>
+</block>

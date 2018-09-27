@@ -1,0 +1,40 @@
+<tr data-id="{$vo.goods_id}" data-order="{$vo.order}">
+    <td class="am-text-middle"><input type="checkbox" class="check-tail"></td>
+    <td class="am-text-middle">
+        <div class="row-line">
+            <div class="img">
+                <img src="{$vo.img}" style="width: 80px;height: 80px;"/>
+            </div>
+            <div class="title">{$vo.goods_name}</div>
+        </div>
+
+    </td>
+    <td class="am-text-middle">{$vo.goods_no}</td>
+    <td class="am-text-middle">{$vo.price}</td>
+    <td class="am-text-middle">{$vo.sku_num}</td>
+    <td class="am-text-middle">{$vo.sale_num}</td>
+    <td class="am-text-middle">{$vo.shipping_fee}</td>
+    <td class="am-text-middle">{:formatTime($vo['on_time'])}</td>
+    <td class="am-text-middle">{$vo.comment_num}</td>
+    <td class="am-text-middle">
+        <div class="goods-label">
+            <volist name="vo.goods_label" id="vo2">
+                <a href="javascript:">{$vo2}</a>
+            </volist>
+        </div>
+
+    </td>
+    <td class="am-text-middle">
+        <div class="am-btn-toolbar">
+            <div class="am-btn-group am-btn-group-xs">
+                <a class="am-btn am-btn-default am-btn-xs" href="{:U('info', ['goods_id' => $vo['goods_id']])}">编辑</a>
+            </div>
+            <div class="am-btn-group am-btn-group-xs">
+                <a class="am-btn am-btn-default am-btn-xs btn-move" data-move="up" href="javascript:">上移</a>
+            </div>
+            <div class="am-btn-group am-btn-group-xs">
+                <a class="am-btn am-btn-default am-btn-xs btn-move" data-move="down" href="javascript:">下移</a>
+            </div>
+        </div>
+    </td>
+</tr>

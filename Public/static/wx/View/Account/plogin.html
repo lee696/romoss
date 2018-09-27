@@ -1,0 +1,54 @@
+<extend name="Public:base" />
+<block name="main">
+    <div class="login-panel">
+        <div class="logo-panel">
+            <img src="__WX_IMG__/logo.png" alt="罗马仕" title="罗马仕">
+        </div>
+        <div class="login-container">
+            <label class="login-tel input-con">
+                <input type="tel" placeholder="请输入手机号" autocomplete="off" maxlength="11">
+            </label>
+            <label class="login-pwd input-con">
+                <input type="password" placeholder="请输入密码" maxlength="20">
+            </label>
+        </div>
+        <a class="lxb-btn lxb-full-btn back-blue login-btn lock">登录</a>
+        <div class="bottom-nav">
+            <a href="{:U('login', ['redirect' => I('redirect')])}">验证码登录</a>
+            <a href="{:U('reg', ['redirect' => I('redirect')])}">注册</a>
+        </div>
+    </div>
+</block>
+<block name="js-con">
+    <script>
+        $(function(){
+            var _redirect = "{$redirect}";
+            var _login = "{:U('pwdLogin')}";
+            var $phone = $('.login-tel input');
+            var $pwd = $('.login-pwd input');
+            var $login = $('.login-btn');
+            $phone.add($pwd).keyup(checkCodeBtn);
+            function checkCodeBtn(){
+                if(isPhone($phone.val()) && $pwd.val().length > 0 ){
+                    $login.removeClass('lock');
+                }else{
+                    $login.addClass('lock');
+                }
+            }
+            $login.click(function(){
+                if($(this).hasClass('lock')){
+                    return false;
+                }
+                $.post(_login, {phone : $phone.val(), pwd : $pwd.val()}, function(res){
+                    doAjax(res, function(){
+                        var link = "{:U('Index/index')}";
+                        if(_redirect){
+                            link = _redirect;
+                        }
+                        location.href = link;
+                    });
+                });
+            });
+        });
+    </script>
+</block>

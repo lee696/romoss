@@ -1,0 +1,97 @@
+<extend name="Public:base" />
+<block name="main">
+    <style>
+        .pay-box{background: #f3f5f9;}
+        .pay-money{background:#fff; margin-bottom:1.05rem;padding:0.6rem 1.5rem 1.7rem 1.5rem;font-size: 1.5rem;color:#3e4e59; }
+        .pay-money span{font-size: 1.5rem;color:#ed5f86;float: right;}
+        .pay-type{ background: #fff; margin-bottom:1.05rem; padding:1.4rem 1rem 0 1.5rem; font-size: 1.4rem;color:#a4aec3;}
+        .pay-type h4{font-size: 1.5rem;padding-bottom: 0.5rem;color:#a4aec3;}
+        .pay-type div{font-size:1.5rem;line-height:1.5rem;border-top:1px #cfd6e4 solid;padding: 2.195rem 0 1.8rem 4.5rem;position:relative;color: #3e4e59;}
+        .pay-type div i{display:block;width: 3rem;height: 3rem;background-size:100% 100%;position: absolute;top:1.3rem;left:0;}
+        .pay-type div i img{width:100%;height:100%;}
+        .pay-type div span{display: inline-block;float: right;margin-top:0.7rem;width:0.85rem;height:1rem;background:url(../../../static/wx/images/icon-right.png)no-repeat;background-size:100% 100%;}
+
+        #float_box{
+            background: rgba(0,0,0,0.6);
+            position: fixed;
+            top:0;
+            left:0;
+            width:100%;
+            height:100%;
+            z-index:999;
+        }
+        #float_box .float_box_cont{
+            padding-top:3.6rem;
+            margin-top:70%;
+            margin-left:10%;
+            background:#fff;
+            width:30rem;
+            height:13rem;
+            border-radius: 1rem;
+        }
+        #float_box .float_box_cont p{
+            font-size:1.9rem;
+            text-align:center;
+            color:#414d58;
+        }
+        #float_box .float_box_cont>div{
+            margin-top: 1.5rem;
+        }
+        #float_box .float_box_cont>div>div{
+            height: 4.5rem;
+            line-height: 4.5rem;
+            text-align: center;
+            font-size: 1.6rem;
+            color: #a4aec3;
+            width: 50%;
+            border-top:1px #d7d7d7 solid
+        }
+        #float_box .float_box_cont>div .c-cancsl{
+            float: left;
+            border-right:1px #d7d7d7 solid;
+        }
+        #float_box .float_box_cont>div .c-confirm{
+            float: right;
+            color: #31a9ff;
+
+        }
+    </style>
+    <div class="header-panel">
+        <a id="oder-cancel" class="go-back"></a>支付完成
+    </div>
+    <div class="pay-box" style='margin-top: 3.5rem'>
+        <div class="pay-money">
+            <p>需要支付金额：<span>￥{$info.price}</span></p>
+
+        </div>
+        <div class="pay-type">
+            <h4>选择支付方式</h4>
+            <a href="{:U('Order/pay',array('oid'=>$_GET['oid']))}"><div><i class="wechat_ico"><img src="../../../static/wx/images/wechat.png" /></i>微信支付<span></span></div></a>
+            <a href="{:U('Order/paysucceed',array('oid'=>$_GET['oid']))}"><div><i class="anypay_ico"><img src="../../../static/wx/images/anypay.png" /></i>支付宝支付<span></span></div></a>
+        </div>
+    </div>
+
+    <div id='float_box' class="none">
+        <div class="float_box_cont">
+            <p>确定退出支付？</p>
+            <div>
+                <div class="c-cancsl">取消</div>
+                <div class="c-confirm"><a href="javascript:goback()">确定</a></div>
+            </div>
+        </div>
+    </div>
+</block>
+<block name="js-con">
+    <script>
+        $(function () {
+            $("#oder-cancel").click(function () {
+                $("#float_box").show();
+            })
+
+            $("#float_box .c-cancsl").click(function () {
+                $("#float_box").hide();
+            });
+
+        });
+    </script>
+</block>

@@ -1,0 +1,32 @@
+@charset "utf-8";
+$bodyColor: #f3f5f9;
+$fontColor: #414d58;
+$fontSize: 1.4rem;
+$lineHeight: 1.8;
+
+$colorBlue: #31a9ff;
+$colorBlueLight: #2bd0ff;
+$colorWhite: #fff;
+$borderColor: #ececec;
+$colorGray: #a4aec3;
+$colorRed: #ef425a;
+
+%clear-fix{
+    &:after, &:before{
+        content: '';
+        display: table;
+        clear: both;
+    }
+}
+%text-overflow{
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+}
+%back-blue{
+    background-color: $colorBlue;
+    background: -webkit-linear-gradient(left, $colorBlue , $colorBlueLight);
+    background: -o-linear-gradient(right, $colorBlue , $colorBlueLight);
+    background: -moz-linear-gradient(right, $colorBlue , $colorBlueLight);
+    background: linear-gradient(to right, $colorBlue , $colorBlueLight);
+}

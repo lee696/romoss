@@ -1,0 +1,134 @@
+<extend name="Public:base"/>
+<block name="local-title">
+    <li>
+        <a href="{:U('index')}">轮播图</a>
+    </li>
+    <li><if condition="I('slide_id')">编辑<else/>新增</if></li>
+</block>
+<block name="main">
+    <div class="am-panel am-panel-default am-margin-top">
+        <div class="am-panel-bd">
+            <div class="am-g">
+                <div class="am-u-sm-12">
+                    <form class="J_slide_form am-form am-form-horizontal" method="post" onsubmit="return false;">
+                        <div class="am-form-group">
+                            <label for="img" class="am-u-sm-3 am-form-label require">图片:</label>
+                            <div class="am-u-sm-9">
+                                <div class="am-panel am-panel-default">
+                                    <div class="am-panel-bd">
+                                        <div class="am-form-group am-form-file">
+                                            <button type="button" class="am-btn am-btn-default am-btn-sm up-img">
+                                            <i class="am-icon-cloud-upload"></i> 选择要上传的文件</button>
+                                            <p class="label-tips">尺寸640x640像素以上，大小2M以下</p>
+                                            <input type="hidden" name="img" id="img" value="{$info.img}">
+                                            <div class="file-img"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="am-form-group">
+                            <label for="title" class="am-u-sm-3 am-form-label require">标题:</label>
+                            <div class="am-u-sm-6 am-u-md-pull-3">
+                                <input type="text" name="title" value= "{$info.title}" id="title" placeholder="标题">
+                            </div>
+                        </div>
+                        <div class="am-form-group">
+                            <label for="link" class="am-u-sm-3 am-form-label">链接:</label>
+                            <div class="am-u-sm-6 am-u-md-pull-3">
+                                <input type="text" name="title" value="{$info.link}" id="link" placeholder="链接">
+                            </div>
+                        </div>
+                        <div class="am-form-group">
+                            <label for="is_on" class="am-u-sm-3 am-form-label">启用:</label>
+                            <div class="am-u-sm-6 am-u-md-pull-3">
+                                <input type="checkbox" id="is_on" name="is_on" value="1" style="width:30px; height:30px;" <if condition="$info['is_on']">checked</if>>
+                            </div>
+                        </div>
+                        <div class="am-form-group">
+                            <div class="am-u-sm-9 am-u-sm-push-3">
+                                <input type="submit" class="submit am-btn am-btn-primary" value="保存">
+                                <button type="button" class="cancel-btn am-btn am-btn-primary">取消</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+</block>
+<block name="js-con">
+    <link rel="stylesheet" href="__K_EDITOR__/themes/default/default.css" />
+    <script src="__K_EDITOR__/kindeditor.js"></script>
+    <script src="__K_EDITOR__/lang/zh_CN.js"></script>
+    <script src="__K_EDITOR__/plugins/code/prettify.js"></script>
+    <script>
+        $('.cancel-btn').click(function () {
+            history.go(-1);
+        });
+        var _slide_id = {:I('slide_id', 0)};
+        KindEditor.ready(function(K) {
+            var editor = K.editor({
+                allowFileManager : true,
+                cssPath : '../plugins/code/prettify.css',
+                uploadJson : '{:U("Admin/File/upload_json")}',
+                fileManagerJson : '{:U("Admin/File/file_manager_json")}',
+            });
+            K('.up-img').click(function() {
+                editor.loadPlugin('image', function() {
+                    editor.plugin.imageDialog({
+                        imageUrl : K('[name=img]').val(),
+                        clickFn : function(url, title, width, height, border, align) {
+                            K('[name=img]').val(url);
+                            checkUploadImg($('[name=img]'));
+                            editor.hideDialog();
+                        }
+                    });
+                });
+            });
+        });
+        checkUploadImg($('[name=img]'));
+        function checkUploadImg($dom) {
+            var src = $dom.val();
+            var $upImg = $dom.siblings('.file-img');
+            $upImg.empty();
+            if(src){
+                $upImg.html('<img src=' + src + '>');
+            }
+        }
+        $('.J_slide_form').submit(function(){
+            var $img = $('#img');
+            var $title = $('#title');
+            var $is_on = $('#is_on');
+            var $link = $('#link');
+            var data = {};
+            if(!$.trim($img.val())){
+                $img.focus();
+                layer.tips('请上传图片', $img.siblings('button'));
+                return false;
+            }
+            if(!$.trim($title.val())){
+                $title.focus();
+                layer.tips('请输入轮播图标题', $title);
+                return false;
+            }
+            data.img = $.trim($img.val());
+            data.title = $.trim($title.val());
+            data.is_on = $is_on.is(':checked')?1:0;
+            data.link = $.trim($link.val());
+            if(_slide_id){
+                data.slide_id =_slide_id;
+            }
+            $.post("{:U('operation')}", data, function(res){
+               doAjax(res, function(){
+                   if(_slide_id){
+                       layer.msg('添加成功');
+                   }else{
+                       layer.msg('已保存');
+                   }
+                   location.href = "{:U('index')}";
+               });
+            });
+        });
+    </script>
+</block>

@@ -1,0 +1,21 @@
+<extend name="Public:base" />
+<block name="main">
+    <style>
+        .dtls_box{margin-top: 3.5rem;padding-top:2.75rem }
+        .dtls_box h4{font-size: 1.8rem;color:#414d58;line-height: 1.8rem;padding-left: 1.4rem;padding-right: 5.1rem;position:relative;}
+        .dtls_box h4 span{position:absolute;top:0;right:1.5rem;font-size: 1rem;color:#a4aec3;}
+        .dtls_box p{margin:1.4rem 0 2.65rem 0;padding:0 1.5rem;font-size:1.5rem;color: #a4aec3;}
+    </style>
+    <div class="message-box">
+        <div class="header-panel">
+            <a href="javascript:goback()" class="go-back"></a>
+            消息
+        </div>
+        <div class="dtls_box">
+            <h4>{$list.title} <span>{$list.create_at}</span></h4>
+            <p>{$list.content}</p>
+        </div>
+
+    </div>
+</block>
+

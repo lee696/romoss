@@ -1,0 +1,57 @@
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/> 
+    <title>微信安全支付</title>
+   <script type="text/javascript" id='global_wxmp_script'>
+	//调用微信JS api 支付
+	function jsApiCall()
+	{
+		WeixinJSBridge.invoke(
+			'getBrandWCPayRequest',
+                        {$json},
+			function(res){
+//				WeixinJSBridge.log(res.err_msg);
+//				alert(res.err_code+" "+res.err_desc+" "+res.err_msg);
+                                if(res.err_msg=='get_brand_wcpay_request:cancel'){
+                                    //取消支付
+                                    //alert('用户取消支付');
+                                }else if(res.err_msg=='get_brand_wcpay_request:ok'){
+                                    //支付成功
+                                    //alert('支付成功');                                    
+                                    window.location.href="{$return_url}";
+                                }
+			}
+		);
+	}
+
+	function callpay()
+	{
+		if (typeof WeixinJSBridge == "undefined"){
+		    if( document.addEventListener ){
+		        document.addEventListener('WeixinJSBridgeReady', jsApiCall, false);
+		    }else if (document.attachEvent){
+		        document.attachEvent('WeixinJSBridgeReady', jsApiCall); 
+		        document.attachEvent('onWeixinJSBridgeReady', jsApiCall);
+		    }
+		}else{
+		    jsApiCall();
+		}
+	}                        
+        callpay();//马上调用微信支付
+	</script>
+</head>
+<body bgcolor="#f2f2f2">
+
+    <div style="text-align:center;border-bottom: 1px dashed #ccc;padding-top:30px">
+    	<p>优选订单</p>
+    	<span style="color:#f00;font-size:36px;display:block;padding-bottom:18px">￥{$total_fee}</span>
+    </div>
+    <div style="text-align:center;border-bottom: 1px dashed #ccc;margin-bottom:25px">
+    	<p>收款方：定智</p>
+    </div>
+	<div align="center">
+		<button style="width:90%; height:50px; border-radius: 15px;background-color:#FE6714; border:0px #FE6714 solid; cursor: pointer;  color:white;  font-size:16px;" type="button" onclick="callpay()" >立即支付</button>
+	</div>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<extend name="Public:base"/>
+<block name="main">
+    <div class="header-panel">
+      <a href="{:U('index',array('goods_id'=>$info[goods_id]))}" class="go-back"></a>
+        详情
+    </div>
+    <a class="fixed-bottom-btn to-buy" href="javascript:">立即购买</a>
+    <div class="comment-detail">
+<ul class="comment-item clr">
+            <li id='0'<if condition="$type eq 0"> class="items-act" </if> >
+
+                <p class="item-tit">全部</p>
+                <p class="item-pice">{$sum}</p>
+            </li>
+            <li id='1' <if condition="$type eq 1"> class="items-act" </if>>
+                <p class="item-tit">好评</p>
+                <p class="item-pice">{$good}</p>
+            </li>
+            <li id='2' <if condition="$type eq 2"> class="items-act" </if> >
+                <p class="item-tit">中评</p>
+                <p class="item-pice">{$secondary}</p>
+            </li>
+            <li id='3' <if condition="$type eq 3"> class="items-act" </if> >
+                <p class="item-tit">差评</p>
+                <p class="item-pice">{$bad}</p>
+            </li>
+        </ul>
+      <notempty name="list">
+        <div class="module-cont">
+          <volist name="list" id="vo">
+            <div class="module-main">
+              <div class="u-img"><empty name="vo.avatar"><img src="../../../static/wx/images/default_avatar.png"/><else /><img src="{$vo.avatar}"/> </empty> </div>
+                <div class="module-utit">
+                    <div>{$vo.nickname}</div>
+                    <div class="module-star">
+                      <for start="1" end="$vo.score">
+                        <span></span>
+                      </for>
+                    </div>
+                    <p class="module-ptime">{$vo.create_time|date='Y-m-d H:s:i',###}</p>
+                </div>
+                <p>{$vo.content}</p>
+                <div class="pj-imgs clr">
+                  <volist name="vo.pic" id="vp">
+                    <div><img src="{$vp.path}"/></div>
+                  </volist>
+                    
+<!--                    <div><img src="../../../static/wx/images/test004.png"/></div>
+                    <div><img src="../../../static/wx/images/test005.png"/></div>-->
+
+                </div>
+            </div>
+            </volist>
+    </div>
+      </notempty>
+      <div class="sku-confirm-box">
+        <div class="shadow-model"></div>
+        <div class="sku-confirm">
+            <div class="goods-detail">
+                <div class="img" id="img" style="background-image: url({$sku[0]['img']})"></div>
+                <div class="title text-overflow">{$info.goods_name}<i class="close"></i></div>
+                <div class="price">￥{$info.price}</div>
+                <div class="sku-num" id="sku-num">库存：{$info.total_num}</div>
+            </div>
+            <div class="goods-sku">
+                <div class="title">规格：</div>
+                <div class="sku-item">
+                    <volist name="sku" id="vo">
+                      <a id="{$vo.sku}" data-sku="{$vo.sku}" data-img="{$vo.img}" data-num="{$vo.sku_num}" onclick="detail({$vo.sku});">{$vo.sku_name}</a>
+                    </volist>
+                </div>
+            </div>
+            <div class="num-controller">
+                数量：<a class="dec lock" href="javascript:">-</a><input type="tel" value="1" class="num"><a class="inc lock" href="javascript:">+</a>
+            </div>
+            <a class="bottom-btn lock buy-soon" href="javascript:">提交</a>
+        </div>
+    </div>
+    <div class="modal-wrap">
+        <img src="" alt="" />
+    </div>
+</block>
+<block name="js-con">
+    <script src="__WX_JS__/TouchSlide.js"></script>
+    <script>
+        var _buy_soon = "{:U('Order/buySoon')}";
+        $(function(){
+            $('.comment-item li').click(function(){
+              var a=this.id;
+//              alert(a);
+              location.href ="{:U('Goods/details','',true,true)}?type="+a+"&goods_id="+{$info.goods_id};
+//                $(this).addClass('items-act').siblings().removeClass('items-act');
+            })
+        })
+        function detail(id){
+          var img =$('#'+id).attr('data-img');
+          var num =$('#'+id).attr('data-num');
+          $('.img').css("background-image","url("+img+")");
+          $('.sku-num').html("库存："+num);
+        }
+        $('.comment-detail').on('click','.pj-imgs img',function(){
+            $('.modal-wrap').show();
+            $('.modal-wrap img').attr('src',$(this).attr('src'));
+        })
+        $('.modal-wrap').click(function(){
+            $(this).hide();
+        })
+    </script>
+    <script src="__WX_JS__/goods.js?__T__"></script>
+</block>

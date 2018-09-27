@@ -1,0 +1,69 @@
+<extend name="Public:base" />
+<block name="main">
+    <style>
+        .logistics-box{background:#f3f5f9;}
+        .logistics-tit{background:#fff;padding:1.5rem 1rem;margin-bottom: 1rem;}
+        .logistics-tit .logistics_ico{float:left;width: 5rem;height: 5rem;}
+        .logistics-tit .logistics_ico img{width:100%;height:100%;}
+        .logistics-tit .tit-info{float: left;margin-left: 1rem;}
+        .logistics-tit .tit-info h5{font-size: 1.5rem;color:#414d58;line-height: 1.5rem;padding-bottom: 0.5rem;}
+        .logistics-tit .tit-info  p{font-size: 1.1rem;color:#a4aec3;line-height: 1.1rem;margin-top: 0.5rem;}
+        .logistics-cont{background: #fff;}
+        .logistics-cont h4{font-size:1.4rem;color:#414d58;padding:1.6rem 1.5rem;border-bottom:1px #d7d7d7 solid; }
+        .logistics-cont ul{padding-top: 2.5rem;}
+        .logistics-cont ul li{padding: 0 1.8rem 1.25rem 2.3rem;margin-left:2.4rem;font-size: 1.3rem;position:relative;border-left: 1px #a4aec3 solid;}
+        .logistics-cont ul li.active p{color:#414d58; }
+        .logistics-cont ul li.active .circle{width: 1.25rem;height: 1.25rem;background:#1eb7d8;position: absolute;top:0;left:-0.7rem;border-radius: 50%; }
+        .logistics-cont ul li p{color:#a4aec3;line-height:1.6rem;}
+        .logistics-cont ul li .c-time{margin-top:1rem;margin-bottom: 1.25rem;}
+        .logistics-cont ul li .circle{width:0.635rem;height:0.635rem;background:#a4aec3;position: absolute;top:0.5rem;left:-0.35rem;border-radius: 50%; }
+    </style>
+    <div class="header-panel">
+        <a href="javascript:goback()" class="go-back"></a>订单详情
+    </div>
+    <div class="logistics-box" style='margin-top: 3.5rem'>
+        <div class="logistics-tit clr">
+            <div class="logistics_ico" >
+                <img src="../static/wx/images/sf.png" />
+            </div>
+            <div class="tit-info">
+                <h5>{$express.name}</h5>
+                <p>运单编号：<span>{$data.nu}</sapn></p>
+                <p>物流状态：<span><switch name="data.state">
+<case value="0">在途中</case>
+<case value="1"> 已揽收</case>
+<case value="2">疑难件</case>
+<case value="3">已签收</case>
+</switch>
+                  </span></p>
+            </div>
+        </div>
+
+        <div class="logistics-cont clr">
+            <h4>物流详情</h4>
+            <ul>
+              <volist name="data[data]" id="vo" key="k">
+                
+             
+                <li <if condition="$k eq 1">class="active"</if> >
+                    <div class="circle"></div>
+                    <p>{$vo.context}</p>
+                    <p class="c-time">{$vo.time}</p>
+                </li>
+                 </volist>
+            </ul>
+
+        </div>
+
+    </div>
+
+
+</block>
+<block name="js-con">
+    <script>
+        $(function () {
+
+
+        });
+    </script>
+</block>

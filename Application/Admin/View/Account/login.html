@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>登录 - {:C('WEB_CONFIG.SITENAME')}</title>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no" />
+    <meta http-equiv="Cache-Control" content="max-age=0" />
+    <meta name="apple-touch-fullscreen" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="Description" content="{:C('WEB_CONFIG.SITENAME')}" />
+    <meta name="Keywords" content="" />
+    <meta name="robots" content="index,follow" />
+    <link rel="stylesheet" href="__AMAZEUI__/css/amazeui.min.css">
+    <link rel="stylesheet" href="__AMAZEUI__/css/admin.css?__T__">
+    <link rel="stylesheet" href="__AMAZEUI__/css/app.css">
+</head>
+
+<body data-type="login">
+    <div class="am-g myapp-login">
+        <div class="myapp-login-logo-block  tpl-login-max">
+            <div class="myapp-login-logo-text">
+                <div class="myapp-login-logo-text">
+                    {:C('WEB_CONFIG.SITENAME')} <i class="am-icon-skyatlas"></i>
+
+                </div>
+            </div>
+
+            <div class="am-u-sm-10 login-am-center">
+                <form class="am-form" id="credentials">
+                    <fieldset>
+                        <div class="am-form-group">
+                            <input type="text" class="" id="username" placeholder="账号">
+                        </div>
+                        <div class="am-form-group">
+                            <input type="password" class="" id="password" placeholder="密码">
+                        </div>
+                        <p><button type="submit" class="am-btn am-btn-default">登录</button></p>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="__COMMON_JS__/jquery.min.js"></script>
+    <script src="__AMAZEUI__/js/amazeui.min.js"></script>
+    <script src="__AMAZEUI__/js/app.js"></script>
+    <script src="__LAYER__/layer.js"></script>
+    <script>
+        $(function(){
+            var loginUrl = "{:U('Account/login')}";
+            $warning = $('.text-warning');
+            $('#credentials').submit(function(){
+                var data = {};
+                var username = $('#username').val();
+                var password = $('#password').val();
+                if(username.length == 0){
+                    layer.msg('账号不能为空');
+                    return false;
+                }
+                if(password.length == 0){
+                    layer.msg('密码不能为空');
+                    return false;
+                }
+                data.username = username;
+                data.password = password;
+                $.post(loginUrl, data, function(res){
+/*                    location.href = "{:U('Index/index')}";
+                    layer.msg(res.msg);*/
+                    if(res.status == 0){
+                        location.href = "{:U('Index/index')}";
+                    }else{
+                        layer.msg(res.msg);
+                    }
+                });
+                return false;
+            });
+        });
+    </script>
+</body>
+</html>

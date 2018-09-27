@@ -1,0 +1,225 @@
+<extend name="Public:base" />
+<block name="main">
+    <style>
+
+        .header-panel a.sub_bt{position: absolute;right:1.7rem;font-size: 1.5rem;color: #fff;}
+        .evaluate-box{background:#f3f5f9;}
+        .evaluate-tit{background: #fff;padding:0.75rem 1.5rem 0 1.1rem;margin-bottom: 1rem;}
+        .evaluate-tit .evaluate-tit-box{padding-bottom: 1rem;}
+        .evaluate-tit .evaluate-tit-box .goods_ico{width:7.5rem;height: 10rem;background: #f3f5f9;float: left;}
+        .evaluate-tit .evaluate-tit-box .goods_ico img{margin: 1.4rem auto;display: block;width: 4rem;height: 7.35rem;}
+        .evaluate-tit .evaluate-tit-box .goods-dec{float: right;width: 26.5rem;font-size: 1.3rem;color: #414d58;}
+        .evaluate-tit .evaluate-tit-box .goods-pris{margin-top: 1.5rem;color:#ed5f86; }
+        .evaluate-cont{background: #fff;}
+        .evaluate-cont textarea{width: 100%;height: 15.55rem; font-size: 1.5rem;color: #a4aec3;padding: 1.5rem 1rem;}
+        .evaluate-cont .evaluate-str{padding: 0.7rem 1rem;border-bottom: 1px rgba(207,214,228,0.5) solid; }
+        .evaluate-cont .evaluate-str p{display: inline-block;margin-right: 1rem;}
+        .evaluate-cont .evaluate-str div{display: inline-block;}
+        .evaluate-cont .evaluate-str div span{display: inline-block;width: 2rem;height: 1.9rem;position: relative;top:0.3rem;background:url(/static/wx/images/star.png) no-repeat;background-size: 100% 100%; }
+        .evaluate-cont .evaluate-str div span.star{background:url(/static/wx/images/icon-star.png) no-repeat;background-size: 100% 100%;}
+        .evaluate-cont .upload_box{padding: 1.5rem;background:#f3f5f9;}
+        .evaluate-cont .upload_box span{font-size: 1.3rem;color: #a4aec3;}
+        .evaluate-cont .upload_box ul li{margin: 0.5rem;float:left;border: 1px #c5ccde solid;text-align: center;width: 7.5rem;height:7.5rem;padding-top: 1.8rem;border-radius:0.5rem;background: #e0e4eb;}
+        /*img{display:inline-block;width:3.7rem; height:3.7rem;}*/
+        #filePicker{
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+            /* overflow: hidden; */
+            margin-top: 1.2rem;
+        }
+        #filePicker div{
+            overflow: inherit;
+        }
+        #filePicker p{
+            position: absolute;
+            bottom: -28px;
+            width: 100%;
+            left: 0px;
+            color: #414d58;
+            text-align: left;
+            text-align: center;
+            font-size: 13px;
+        }
+        #fileList{
+            float: left;
+            /* margin-top: 1.2rem; */
+        }
+        #fileList .imgWrap{
+            overflow: hidden;
+            margin-right: 6vw;
+        }
+        #fileList .imgWrap{
+            width: 26.67vw;  
+            height: 26.67vw;        
+        }
+        #fileList .imgWrap{
+            margin-top: 1.2rem;
+        }
+        #fileList .imgWrap:nth-child(3n-1){
+            margin-right: 0;
+        }
+        .file-wrap{
+            padding: 0 4vw 0;
+        }
+        .file-wrap:after{
+            content:'';
+　　　　　　height:0;
+　　　　　　line-height:0;
+　　　　　　display:block;
+　　　　　　visibility:hidden;
+　　　　　　clear:both;
+        }
+    </style>
+    <div class="header-panel">
+        <a href="#" class="go-back" id="eval"></a>评价
+        <a href="#" class="sub_bt" id="esub">提交</a>
+    </div>
+    <div class="evaluate-box" style='margin-top: 3.5rem'>
+        <div class="evaluate-tit">
+            <div class="evaluate-tit-box clr">
+                <div class="goods_ico">
+                    <img src="{$info.goods.goods_img}" />
+                </div>
+                <div class="goods-dec">
+                  <p>{$info.goods.goods_name}</p>
+                    <p class="goods-pris">￥{$info.goods.price} <span>X{$info.goods_num}</span></p>
+                </div>
+            </div>
+        </div>
+      <form action="{:U('')}" method = 'post' id='formid' >
+        <input type='hidden' name='oid' value="{$_GET['oid']}"/>
+          <div class="evaluate-cont ">
+            <div class="evaluate-str clr">
+                <p>商品评价</p>
+                <div id="act_star">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <input type='hidden' name='score' id="score"/>
+            </div>
+            <textarea placeholder="请输入内容" name="content"></textarea>
+
+            
+        <div id="uploader-demo">
+    <!--用来存放item-->
+    
+</div>
+<!--            <div class="upload_box">
+              
+                <ul class="clr">
+                  <input type="file" multiple="multiple" name="file[]">
+                  
+                    <li>
+                        <img src="/static/wx/images/upl.png" />
+
+                    </li>
+
+                </ul>
+                <span>(最多上传9张图片)</span>
+            </div>-->
+            
+        </div>
+    <div class="file-wrap">
+        <div id="fileList" class="uploader-list"></div>
+        <div id="filePicker">
+            <img src="/static/wx/images/upl.png" />
+            <p>(最多上传9张图)</p>
+        </div>
+    </div>
+      </form>
+      
+
+
+    </div>
+
+
+</block>
+<block name="js-con">
+    <script>
+     var uploader = WebUploader.create({
+
+    // 选完文件后，是否自动上传。
+    auto: true,
+
+    // swf文件路径
+    swf: "__WX__/webuploade/" + '/js/Uploader.swf',
+
+    // 文件接收服务端。
+    server: "{:U('uploadPicture')}",
+
+    // 选择文件的按钮。可选。
+    // 内部根据当前运行是创建，可能是input元素，也可能是flash.
+    pick: '#filePicker',
+    fileNumLimit:9,
+    // 只允许选择图片文件。
+    accept: {
+        title: 'Images',
+        extensions: 'gif,jpg,jpeg,bmp,png',
+        mimeTypes: 'image/*'
+    }
+});
+var count=0;
+uploader.on( 'beforeFileQueued', function() {
+  if(count==9){
+    alert('最大只能2张');
+  }
+            
+            });
+          uploader.on( 'fileQueued', function() {
+                count++;
+            });
+     
+            uploader.on( 'fileDequeued', function() {
+                count--;
+            });
+     
+            uploader.on( 'uploadFinished', function() {
+                //注销这段代码就可以了 count = 0;
+            });
+uploader.on( 'uploadSuccess', function( file ,data) {
+  var $li = $(
+            '<div id="' + data.id + '" class="imgWrap">' +
+                '<img>' +
+                
+            '</div>'+'<input type="hidden" name="img[]" value="'+data.id+'" />'
+            ),
+        $img = $li.find('img');
+
+        
+    // $list为容器jQuery实例
+    $('#fileList').append( $li );
+
+    // 创建缩略图
+    // 如果为非图片文件，可以不用调用此方法。
+    // thumbnailWidth x thumbnailHeight 为 100 x 100
+    uploader.makeThumb( file, function( error, src ) {
+        if ( error ) {
+            $img.replaceWith('<span>不能预览</span>');
+            return;
+        }
+
+        $img.attr( 'src', src );
+    }, 100, 100 );
+});
+
+        $(function () {
+            $("#act_star span").click(function () {
+                $(this).addClass("star").prevAll().addClass("star");
+                $(this).nextAll().removeClass('star');
+                $('#score').val($(this).index()+1);
+            });
+
+            
+             $("#esub").click(function () {
+               document.getElementById("formid").submit();
+            });
+        });
+        $("#eval").click(function(){
+            location.href = "{:U('Order/index?type=4')}";
+        });
+    </script>
+</block>

@@ -1,0 +1,72 @@
+<extend name="Public:base"/>
+<block name="local-title">
+    <li>
+        <a href="{:U('index')}">订单管理</a>
+    </li>
+    <li>发货</li>
+</block>
+<block name="main">
+    <div class="am-panel am-panel-default am-margin-top">
+        <div class="am-panel-bd">
+            <div class="am-g">
+                <div class="am-u-sm-12">
+                    <form class="J_slide_form am-form am-form-horizontal" method="post" onsubmit="return false;">
+                        <div class="am-form-group">
+                            <label for="title" class="am-u-sm-3 am-form-label require">物流公司:</label>
+                            <div class="am-u-sm-6 am-u-md-pull-3">
+                              <select name="expresscode" id='expresscode'>
+                                <volist name='express' id='vo'>
+                                  <option value='{$vo.id}' <if condition="$info['expresscode'] eq $vo['id']">selected</if>>{$vo.name}</option>
+                                </volist>
+                              </select>
+                            </div>
+                        </div>
+                        <div class="am-form-group">
+                            <label for="title" class="am-u-sm-3 am-form-label require">快递单号:</label>
+                            <div class="am-u-sm-6 am-u-md-pull-3">
+                                <input type="text" name="expressno" value= "{$info.expressno}" id="exp" placeholder="快递单号">
+                            </div>
+                        </div>
+                        <div class="am-form-group">
+                            <div class="am-u-sm-9 am-u-sm-push-3">
+                                <input type="submit" class="submit am-btn am-btn-primary" value="发货">
+                                <button type="button" class="cancel-btn am-btn am-btn-primary">取消</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+</block>
+<block name="js-con">
+    <link rel="stylesheet" href="__K_EDITOR__/themes/default/default.css" />
+    <script src="__K_EDITOR__/kindeditor.js"></script>
+    <script src="__K_EDITOR__/lang/zh_CN.js"></script>
+    <script src="__K_EDITOR__/plugins/code/prettify.js"></script>
+    <script>
+        $('.cancel-btn').click(function () {
+            history.go(-1);
+        });
+        
+        $('.J_slide_form').submit(function(){
+          var order_id = {$info.order_id};
+            var exp = $('#exp').val();
+             var expresscode = $('#expresscode').val();
+            var data = {};
+            if(!exp){
+                exp.focus();
+                layer.tips('请输入快递编号', exp);
+                return false;
+            }
+            data.exp = exp;
+            data.order_id = order_id;
+            data.expresscode = expresscode;
+            $.post("{:U('send')}", data, function(res){
+               doAjax(res, function(){
+                       layer.msg('已修改订单状态');
+                   location.href = "{:U('index')}";
+               });
+            });
+        });
+    </script>
+</block>

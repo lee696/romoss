@@ -1,0 +1,99 @@
+<extend name="Public:base"/>
+<block name="local-title">
+    <li>
+        <a href="{:U('index')}">基础管理</a>
+    </li>
+    <li><if condition="I('slide_id')">编辑<else/>权限添加</if></li>
+</block>
+<block name="main">
+    <div class="am-panel am-panel-default am-margin-top">
+        <div class="am-panel-bd">
+            <div class="am-g">
+                <div class="am-u-sm-12">
+                    <form class="J_slide_form am-form am-form-horizontal" method="post" onsubmit="return false;">
+
+                        <div class="am-form-group">
+                            <label for="title" class="am-u-sm-3 am-form-label require">权限名称:</label>
+                            <div class="am-u-sm-6 am-u-md-pull-3">
+                                <input type="text" name="rule_name" value= "" id="name">
+                            </div>
+                        </div>
+                        <div class="am-form-group">
+                            <label for="link" class="am-u-sm-3 am-form-label require">模块:</label>
+                            <div class="am-u-sm-6 am-u-md-pull-3">
+                                <input type="text" name="rule_module" value="" id="module">
+                            </div>
+                        </div>
+                        <div class="am-form-group">
+                            <label for="link" class="am-u-sm-3 am-form-label require">控制器:</label>
+                            <div class="am-u-sm-6 am-u-md-pull-3">
+                                <input type="text" name="rule_controller" value="" id="controller">
+                            </div>
+                        </div>
+                        <div class="am-form-group">
+                            <label for="link" class="am-u-sm-3 am-form-label require">方法名:</label>
+                            <div class="am-u-sm-6 am-u-md-pull-3">
+                                <input type="text" name="rule_action" value="" id="action">
+                            </div>
+                        </div>
+                        <div class="am-form-group">
+                            <label for="link" class="am-u-sm-3 am-form-label require">父节点:</label>
+                            <div class="am-u-sm-6 am-u-md-pull-3">
+                                <select name="pid" id="pid" class="form-control">
+                                    <option value="0">|--顶级权限</option>
+                                    <volist name="tree" id="vo">
+                                        <option value="{$vo.rule_id}">|{$vo.lev|str_repeat="--",###}{$vo.rule_name}</option>
+                                    </volist>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="am-form-group">
+                            <label for="link" class="am-u-sm-3 am-form-label require">是否导航栏显示:</label>
+                            <div class="am-u-sm-6 am-u-md-pull-3">
+                                <input type="radio"  name="is_show" id="is_show" value="1" checked="checked" >显示
+                                <input type="radio"  name="is_show" id="is_show" value="0" >不显示
+                            </div>
+                        </div>
+                        <div class="am-form-group">
+                            <div class="am-u-sm-9 am-u-sm-push-3">
+                                <input type="submit" class="submit am-btn am-btn-primary" value="提交">
+                                <button type="button" class="cancel-btn am-btn am-btn-primary">取消</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+</block>
+<block name="js-con">
+    <link rel="stylesheet" href="__K_EDITOR__/themes/default/default.css" />
+    <script src="__K_EDITOR__/plugins/code/prettify.js"></script>
+    <script>
+        $('.cancel-btn').click(function () {
+            history.go(-1);
+        });
+        $('.J_slide_form').submit(function(){
+            var $name = $('#name').val();
+            var $module = $('#module').val();
+            var $controller = $('#controller').val();
+            var $action = $('#action').val();
+            var $pid = $('#pid').val();
+            var $is_show = $('#is_show').val();
+            var data = {};
+            data.name = $name;
+            data.module = $module;
+            data.controller = $controller;
+            data.action = $action;
+            data.pid = $pid;
+            data.is_show = $is_show;
+            $.post("{:U('Rule/add')}", data, function(res){
+                layer.msg(res.content);
+                location.href = "{:U('index')}";
+/*               doAjax(res, function(){
+                       layer.msg('添加成功');
+                   location.href = "{:U('index')}";
+               });*/
+            });
+        });
+    </script>
+</block>

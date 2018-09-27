@@ -1,0 +1,39 @@
+<extend name="Public:base" />
+<block name="main">
+    <style>
+        .member-box{margin-top: 3.5rem;}
+    </style>
+    <div class="header-panel">
+        <a href="javascript:goback()" class="go-back"></a>
+        设置
+    </div>
+    <div class="member-box">
+        <div class='col'>
+            <a href="{:U('revise')}">
+                密码管理
+                <i><i class='ico-right'></i></i>
+            </a>
+        </div>
+        <div class='col'>
+            <a href="{:U('feedback')}">
+                意见反馈
+                <i><i class='ico-right'></i></i>
+            </a>
+        </div>
+        <div class='col'>
+            <a href="{:U('aboutMe')}">
+                关于我们
+                <i><i class='ico-right'></i></i>
+            </a>
+        </div>
+        <div class='btn-col'>
+            <a class='a-btn' href="{:U('Account/loginout')}">退出登录</a>
+        </div>
+    </div>
+</block>
+<block name="js-con">
+    <script>
+        $(function () {
+        });
+    </script>
+</block>

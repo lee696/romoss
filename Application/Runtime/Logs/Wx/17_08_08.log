@@ -1,0 +1,476 @@
+[ 2017-08-08T13:58:15+08:00 ] 127.0.0.1 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000062s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002557s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002694s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.004989s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.008158s ]
+SQL: SHOW COLUMNS FROM `cm_slide` [ RunTime:0.0416s ]
+SQL: SELECT * FROM `cm_slide` WHERE `is_on` = 1 AND `is_del` = 0 ORDER BY `order` desc  [ RunTime:0.0541s ]
+SQL: SHOW COLUMNS FROM `cm_goods` [ RunTime:0.0488s ]
+SQL: SELECT * FROM `cm_goods` WHERE `is_on` = 1 AND `is_del` = 0 ORDER BY `order` desc  [ RunTime:0.0426s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000505s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000838s ]
+NOTIC: [8] Use of undefined constant home - assumed 'home' D:\Visual-NMP-x64\www\work\jilian\luomas\Application\Runtime\Cache\Wx\a129b0c95cab7736e52365c7097f2ab9.php 第 33 行.
+NOTIC: [8] Use of undefined constant home - assumed 'home' D:\Visual-NMP-x64\www\work\jilian\luomas\Application\Runtime\Cache\Wx\a129b0c95cab7736e52365c7097f2ab9.php 第 33 行.
+NOTIC: [8] Use of undefined constant home - assumed 'home' D:\Visual-NMP-x64\www\work\jilian\luomas\Application\Runtime\Cache\Wx\a129b0c95cab7736e52365c7097f2ab9.php 第 34 行.
+NOTIC: [8] Use of undefined constant diy - assumed 'diy' D:\Visual-NMP-x64\www\work\jilian\luomas\Application\Runtime\Cache\Wx\a129b0c95cab7736e52365c7097f2ab9.php 第 34 行.
+NOTIC: [8] Use of undefined constant home - assumed 'home' D:\Visual-NMP-x64\www\work\jilian\luomas\Application\Runtime\Cache\Wx\a129b0c95cab7736e52365c7097f2ab9.php 第 48 行.
+NOTIC: [8] Use of undefined constant member - assumed 'member' D:\Visual-NMP-x64\www\work\jilian\luomas\Application\Runtime\Cache\Wx\a129b0c95cab7736e52365c7097f2ab9.php 第 48 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.055735s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.056057s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002102s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002534s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.003701s ]
+INFO: [ app_end ] --END-- [ RunTime:0.004132s ]
+
+[ 2017-08-08T13:58:15+08:00 ] 127.0.0.1 /static/upload/image/20170807/20170807151919_25891.jpg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000101s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000852s ]
+
+[ 2017-08-08T13:58:15+08:00 ] 127.0.0.1 /static/upload/image/20170731/20170731172550_62430.jpg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000102s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000847s ]
+
+[ 2017-08-08T13:58:15+08:00 ] 127.0.0.1 /static/upload/image/20170801/20170801113535_94780.jpg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000116s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000979s ]
+
+[ 2017-08-08T13:58:15+08:00 ] 127.0.0.1 /static/upload/image/20170801/20170801114619_42870.jpg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000117s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000959s ]
+
+[ 2017-08-08T13:58:15+08:00 ] 127.0.0.1 /static/upload/image/20170801/20170801114825_76380.jpg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000120s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000932s ]
+
+[ 2017-08-08T13:58:15+08:00 ] 127.0.0.1 /static/upload/image/20170731/20170731172753_71188.jpg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000059s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000565s ]
+
+[ 2017-08-08T13:58:15+08:00 ] 127.0.0.1 /static/upload/image/20170731/20170731172811_75973.jpg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000060s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000836s ]
+
+[ 2017-08-08T13:58:15+08:00 ] 127.0.0.1 /favicon.ico
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000065s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000672s ]
+
+[ 2017-08-08T13:58:31+08:00 ] 127.0.0.1 /Member/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000061s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000693s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000736s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002110s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003356s ]
+
+[ 2017-08-08T13:58:31+08:00 ] 127.0.0.1 /Account/login
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000057s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000471s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000637s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001792s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002911s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000590s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000930s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.019995s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.020426s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000731s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001005s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000678s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000971s ]
+
+[ 2017-08-08T05:58:41+00:00 ] 127.0.0.1 /Account/sendLoginCode.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000058s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000890s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000901s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002244s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003516s ]
+
+[ 2017-08-08T13:58:53+08:00 ] 127.0.0.1 /Account/phoneLogin.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000059s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000759s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000769s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002023s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003201s ]
+SQL: SHOW COLUMNS FROM `cm_user` [ RunTime:0.0411s ]
+SQL: SELECT * FROM `cm_user` WHERE `phone` = '18926546903' LIMIT 1   [ RunTime:0.0406s ]
+
+[ 2017-08-08T13:58:54+08:00 ] 127.0.0.1 /Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000057s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000488s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000715s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001551s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002799s ]
+SQL: SHOW COLUMNS FROM `cm_slide` [ RunTime:0.0381s ]
+SQL: SELECT * FROM `cm_slide` WHERE `is_on` = 1 AND `is_del` = 0 ORDER BY `order` desc  [ RunTime:0.0454s ]
+SQL: SHOW COLUMNS FROM `cm_goods` [ RunTime:0.0392s ]
+SQL: SELECT * FROM `cm_goods` WHERE `is_on` = 1 AND `is_del` = 0 ORDER BY `order` desc  [ RunTime:0.0433s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000500s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000816s ]
+NOTIC: [8] Use of undefined constant home - assumed 'home' D:\Visual-NMP-x64\www\work\jilian\luomas\Application\Runtime\Cache\Wx\a129b0c95cab7736e52365c7097f2ab9.php 第 33 行.
+NOTIC: [8] Use of undefined constant home - assumed 'home' D:\Visual-NMP-x64\www\work\jilian\luomas\Application\Runtime\Cache\Wx\a129b0c95cab7736e52365c7097f2ab9.php 第 33 行.
+NOTIC: [8] Use of undefined constant home - assumed 'home' D:\Visual-NMP-x64\www\work\jilian\luomas\Application\Runtime\Cache\Wx\a129b0c95cab7736e52365c7097f2ab9.php 第 34 行.
+NOTIC: [8] Use of undefined constant diy - assumed 'diy' D:\Visual-NMP-x64\www\work\jilian\luomas\Application\Runtime\Cache\Wx\a129b0c95cab7736e52365c7097f2ab9.php 第 34 行.
+NOTIC: [8] Use of undefined constant home - assumed 'home' D:\Visual-NMP-x64\www\work\jilian\luomas\Application\Runtime\Cache\Wx\a129b0c95cab7736e52365c7097f2ab9.php 第 48 行.
+NOTIC: [8] Use of undefined constant member - assumed 'member' D:\Visual-NMP-x64\www\work\jilian\luomas\Application\Runtime\Cache\Wx\a129b0c95cab7736e52365c7097f2ab9.php 第 48 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.036034s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.036331s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000764s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001040s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000646s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000937s ]
+
+[ 2017-08-08T13:58:54+08:00 ] 127.0.0.1 /static/upload/image/20170731/20170731172550_62430.jpg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000104s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000880s ]
+
+[ 2017-08-08T13:58:54+08:00 ] 127.0.0.1 /static/upload/image/20170801/20170801113535_94780.jpg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000096s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000827s ]
+
+[ 2017-08-08T13:58:54+08:00 ] 127.0.0.1 /static/upload/image/20170801/20170801114619_42870.jpg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000103s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000797s ]
+
+[ 2017-08-08T13:58:54+08:00 ] 127.0.0.1 /static/upload/image/20170801/20170801114825_76380.jpg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000117s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000999s ]
+
+[ 2017-08-08T13:58:54+08:00 ] 127.0.0.1 /static/upload/image/20170807/20170807151919_25891.jpg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000118s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001046s ]
+
+[ 2017-08-08T13:58:54+08:00 ] 127.0.0.1 /static/upload/image/20170731/20170731172753_71188.jpg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000116s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000933s ]
+
+[ 2017-08-08T13:58:54+08:00 ] 127.0.0.1 /static/upload/image/20170731/20170731172811_75973.jpg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000106s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000873s ]
+
+[ 2017-08-08T13:58:56+08:00 ] 127.0.0.1 /Member/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000057s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000473s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000476s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001361s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002304s ]
+SQL: SHOW COLUMNS FROM `cm_user` [ RunTime:0.0426s ]
+SQL: SELECT * FROM `cm_user` WHERE ( user_id=6 ) LIMIT 1   [ RunTime:0.0406s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000875s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001391s ]
+NOTIC: [8] Use of undefined constant member - assumed 'member' D:\Visual-NMP-x64\www\work\jilian\luomas\Application\Runtime\Cache\Wx\aa4b13e57381e7b300f5b3b7937d0d39.php 第 33 行.
+NOTIC: [8] Use of undefined constant home - assumed 'home' D:\Visual-NMP-x64\www\work\jilian\luomas\Application\Runtime\Cache\Wx\aa4b13e57381e7b300f5b3b7937d0d39.php 第 33 行.
+NOTIC: [8] Use of undefined constant member - assumed 'member' D:\Visual-NMP-x64\www\work\jilian\luomas\Application\Runtime\Cache\Wx\aa4b13e57381e7b300f5b3b7937d0d39.php 第 34 行.
+NOTIC: [8] Use of undefined constant diy - assumed 'diy' D:\Visual-NMP-x64\www\work\jilian\luomas\Application\Runtime\Cache\Wx\aa4b13e57381e7b300f5b3b7937d0d39.php 第 34 行.
+NOTIC: [8] Use of undefined constant member - assumed 'member' D:\Visual-NMP-x64\www\work\jilian\luomas\Application\Runtime\Cache\Wx\aa4b13e57381e7b300f5b3b7937d0d39.php 第 48 行.
+NOTIC: [8] Use of undefined constant member - assumed 'member' D:\Visual-NMP-x64\www\work\jilian\luomas\Application\Runtime\Cache\Wx\aa4b13e57381e7b300f5b3b7937d0d39.php 第 48 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.050275s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.050910s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001043s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001555s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000812s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001298s ]
+
+[ 2017-08-08T13:58:59+08:00 ] 127.0.0.1 /Order/index/type/0.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000060s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000641s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000597s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002040s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003142s ]
+SQL: SHOW COLUMNS FROM `cm_order` [ RunTime:0.0418s ]
+SQL: SELECT cm_order.*,cm_address.address,cm_address.consignee,cm_address.phone FROM `cm_order` INNER JOIN cm_address ON cm_order.address = cm_address.address_id  WHERE ( cm_order.user_id =6   ) ORDER BY create_time desc LIMIT 0,5   [ RunTime:0.0417s ]
+SQL: SHOW COLUMNS FROM `cm_cart` [ RunTime:0.0459s ]
+SQL: SELECT * FROM `cm_cart` WHERE ( 16 )  [ RunTime:0.0421s ]
+SQL: SHOW COLUMNS FROM `cm_goods` [ RunTime:0.0419s ]
+SQL: SELECT * FROM `cm_goods` WHERE `goods_id` = null LIMIT 1   [ RunTime:0.0411s ]
+SQL: SELECT * FROM `cm_cart` WHERE ( 17 )  [ RunTime:0.0410s ]
+SQL: SELECT * FROM `cm_goods` WHERE `goods_id` = null LIMIT 1   [ RunTime:0.0404s ]
+SQL: SELECT * FROM `cm_cart` WHERE ( 19 )  [ RunTime:0.0408s ]
+SQL: SELECT * FROM `cm_goods` WHERE `goods_id` = null LIMIT 1   [ RunTime:0.0399s ]
+SQL: SELECT * FROM `cm_cart` WHERE ( 20 )  [ RunTime:0.0397s ]
+SQL: SELECT * FROM `cm_goods` WHERE `goods_id` = null LIMIT 1   [ RunTime:0.0405s ]
+SQL: SELECT * FROM `cm_cart` WHERE ( 21 )  [ RunTime:0.0394s ]
+SQL: SELECT * FROM `cm_goods` WHERE `goods_id` = null LIMIT 1   [ RunTime:0.0417s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001360s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001680s ]
+NOTIC: [8] Use of undefined constant goods - assumed 'goods' D:\Visual-NMP-x64\www\work\jilian\luomas\Application\Runtime\Cache\Wx\2be037a9f947473efac7af60ed98147d.php 第 271 行.
+NOTIC: [8] Use of undefined constant goods_img - assumed 'goods_img' D:\Visual-NMP-x64\www\work\jilian\luomas\Application\Runtime\Cache\Wx\2be037a9f947473efac7af60ed98147d.php 第 271 行.
+NOTIC: [8] Use of undefined constant goods - assumed 'goods' D:\Visual-NMP-x64\www\work\jilian\luomas\Application\Runtime\Cache\Wx\2be037a9f947473efac7af60ed98147d.php 第 271 行.
+NOTIC: [8] Use of undefined constant goods_img - assumed 'goods_img' D:\Visual-NMP-x64\www\work\jilian\luomas\Application\Runtime\Cache\Wx\2be037a9f947473efac7af60ed98147d.php 第 271 行.
+NOTIC: [8] Use of undefined constant goods - assumed 'goods' D:\Visual-NMP-x64\www\work\jilian\luomas\Application\Runtime\Cache\Wx\2be037a9f947473efac7af60ed98147d.php 第 271 行.
+NOTIC: [8] Use of undefined constant goods_img - assumed 'goods_img' D:\Visual-NMP-x64\www\work\jilian\luomas\Application\Runtime\Cache\Wx\2be037a9f947473efac7af60ed98147d.php 第 271 行.
+NOTIC: [8] Use of undefined constant goods - assumed 'goods' D:\Visual-NMP-x64\www\work\jilian\luomas\Application\Runtime\Cache\Wx\2be037a9f947473efac7af60ed98147d.php 第 271 行.
+NOTIC: [8] Use of undefined constant goods_img - assumed 'goods_img' D:\Visual-NMP-x64\www\work\jilian\luomas\Application\Runtime\Cache\Wx\2be037a9f947473efac7af60ed98147d.php 第 271 行.
+NOTIC: [8] Use of undefined constant goods - assumed 'goods' D:\Visual-NMP-x64\www\work\jilian\luomas\Application\Runtime\Cache\Wx\2be037a9f947473efac7af60ed98147d.php 第 271 行.
+NOTIC: [8] Use of undefined constant goods_img - assumed 'goods_img' D:\Visual-NMP-x64\www\work\jilian\luomas\Application\Runtime\Cache\Wx\2be037a9f947473efac7af60ed98147d.php 第 271 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.072419s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.072781s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000671s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000949s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000652s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000946s ]
+
+[ 2017-08-08T13:58:59+08:00 ] 127.0.0.1 /Order/index/type/pull-icon@2x.png
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000058s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000496s ]
+
+[ 2017-08-08T13:59:04+08:00 ] 127.0.0.1 /Order/index/type/1.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000060s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000655s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000621s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001707s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002842s ]
+SQL: SHOW COLUMNS FROM `cm_order` [ RunTime:0.0393s ]
+SQL: SELECT cm_order.*,cm_address.address,cm_address.consignee,cm_address.phone FROM `cm_order` INNER JOIN cm_address ON cm_order.address = cm_address.address_id  WHERE ( cm_order.user_id =6 and cm_order.status = 1  ) ORDER BY create_time desc LIMIT 0,5   [ RunTime:0.0542s ]
+SQL: SHOW COLUMNS FROM `cm_cart` [ RunTime:0.0525s ]
+SQL: SELECT * FROM `cm_cart` WHERE ( 16 )  [ RunTime:0.0394s ]
+SQL: SHOW COLUMNS FROM `cm_goods` [ RunTime:0.0394s ]
+SQL: SELECT * FROM `cm_goods` WHERE `goods_id` = null LIMIT 1   [ RunTime:0.0387s ]
+SQL: SELECT * FROM `cm_cart` WHERE ( 17 )  [ RunTime:0.0398s ]
+SQL: SELECT * FROM `cm_goods` WHERE `goods_id` = null LIMIT 1   [ RunTime:0.0380s ]
+SQL: SELECT * FROM `cm_cart` WHERE ( 19 )  [ RunTime:0.0398s ]
+SQL: SELECT * FROM `cm_goods` WHERE `goods_id` = null LIMIT 1   [ RunTime:0.0384s ]
+SQL: SELECT * FROM `cm_cart` WHERE ( 20 )  [ RunTime:0.0400s ]
+SQL: SELECT * FROM `cm_goods` WHERE `goods_id` = null LIMIT 1   [ RunTime:0.0401s ]
+SQL: SELECT * FROM `cm_cart` WHERE ( 26 )  [ RunTime:0.0392s ]
+SQL: SELECT * FROM `cm_goods` WHERE `goods_id` = null LIMIT 1   [ RunTime:0.0390s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001325s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001635s ]
+NOTIC: [8] Use of undefined constant goods - assumed 'goods' D:\Visual-NMP-x64\www\work\jilian\luomas\Application\Runtime\Cache\Wx\2be037a9f947473efac7af60ed98147d.php 第 271 行.
+NOTIC: [8] Use of undefined constant goods_img - assumed 'goods_img' D:\Visual-NMP-x64\www\work\jilian\luomas\Application\Runtime\Cache\Wx\2be037a9f947473efac7af60ed98147d.php 第 271 行.
+NOTIC: [8] Use of undefined constant goods - assumed 'goods' D:\Visual-NMP-x64\www\work\jilian\luomas\Application\Runtime\Cache\Wx\2be037a9f947473efac7af60ed98147d.php 第 271 行.
+NOTIC: [8] Use of undefined constant goods_img - assumed 'goods_img' D:\Visual-NMP-x64\www\work\jilian\luomas\Application\Runtime\Cache\Wx\2be037a9f947473efac7af60ed98147d.php 第 271 行.
+NOTIC: [8] Use of undefined constant goods - assumed 'goods' D:\Visual-NMP-x64\www\work\jilian\luomas\Application\Runtime\Cache\Wx\2be037a9f947473efac7af60ed98147d.php 第 271 行.
+NOTIC: [8] Use of undefined constant goods_img - assumed 'goods_img' D:\Visual-NMP-x64\www\work\jilian\luomas\Application\Runtime\Cache\Wx\2be037a9f947473efac7af60ed98147d.php 第 271 行.
+NOTIC: [8] Use of undefined constant goods - assumed 'goods' D:\Visual-NMP-x64\www\work\jilian\luomas\Application\Runtime\Cache\Wx\2be037a9f947473efac7af60ed98147d.php 第 271 行.
+NOTIC: [8] Use of undefined constant goods_img - assumed 'goods_img' D:\Visual-NMP-x64\www\work\jilian\luomas\Application\Runtime\Cache\Wx\2be037a9f947473efac7af60ed98147d.php 第 271 行.
+NOTIC: [8] Use of undefined constant goods - assumed 'goods' D:\Visual-NMP-x64\www\work\jilian\luomas\Application\Runtime\Cache\Wx\2be037a9f947473efac7af60ed98147d.php 第 271 行.
+NOTIC: [8] Use of undefined constant goods_img - assumed 'goods_img' D:\Visual-NMP-x64\www\work\jilian\luomas\Application\Runtime\Cache\Wx\2be037a9f947473efac7af60ed98147d.php 第 271 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.072342s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.072843s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000909s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001474s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000868s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001488s ]
+
+[ 2017-08-08T13:59:04+08:00 ] 127.0.0.1 /Order/index/type/pull-icon@2x.png
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000067s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000486s ]
+
+[ 2017-08-08T13:59:07+08:00 ] 127.0.0.1 /Order/index/type/2.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000061s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000770s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000630s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001867s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002979s ]
+SQL: SHOW COLUMNS FROM `cm_order` [ RunTime:0.0402s ]
+SQL: SELECT cm_order.*,cm_address.address,cm_address.consignee,cm_address.phone FROM `cm_order` INNER JOIN cm_address ON cm_order.address = cm_address.address_id  WHERE ( cm_order.user_id =6 and cm_order.status in (2,3)  ) ORDER BY create_time desc LIMIT 0,5   [ RunTime:0.0414s ]
+SQL: SHOW COLUMNS FROM `cm_cart` [ RunTime:0.0406s ]
+SQL: SELECT * FROM `cm_cart` WHERE ( 21 )  [ RunTime:0.0399s ]
+SQL: SHOW COLUMNS FROM `cm_goods` [ RunTime:0.0401s ]
+SQL: SELECT * FROM `cm_goods` WHERE `goods_id` = null LIMIT 1   [ RunTime:0.0389s ]
+SQL: SELECT * FROM `cm_cart` WHERE ( 22 )  [ RunTime:0.0399s ]
+SQL: SELECT * FROM `cm_goods` WHERE `goods_id` = null LIMIT 1   [ RunTime:0.0389s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001286s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001591s ]
+NOTIC: [8] Use of undefined constant goods - assumed 'goods' D:\Visual-NMP-x64\www\work\jilian\luomas\Application\Runtime\Cache\Wx\2be037a9f947473efac7af60ed98147d.php 第 271 行.
+NOTIC: [8] Use of undefined constant goods_img - assumed 'goods_img' D:\Visual-NMP-x64\www\work\jilian\luomas\Application\Runtime\Cache\Wx\2be037a9f947473efac7af60ed98147d.php 第 271 行.
+NOTIC: [8] Use of undefined constant goods - assumed 'goods' D:\Visual-NMP-x64\www\work\jilian\luomas\Application\Runtime\Cache\Wx\2be037a9f947473efac7af60ed98147d.php 第 271 行.
+NOTIC: [8] Use of undefined constant goods_img - assumed 'goods_img' D:\Visual-NMP-x64\www\work\jilian\luomas\Application\Runtime\Cache\Wx\2be037a9f947473efac7af60ed98147d.php 第 271 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.046501s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.046811s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000738s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001013s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000811s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001137s ]
+
+[ 2017-08-08T13:59:07+08:00 ] 127.0.0.1 /Order/index/type/pull-icon@2x.png
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000059s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000523s ]
+
+[ 2017-08-08T13:59:10+08:00 ] 127.0.0.1 /Order/index/type/4.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000071s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000984s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000512s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001546s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002504s ]
+SQL: SHOW COLUMNS FROM `cm_order` [ RunTime:0.0404s ]
+SQL: SELECT cm_order.*,cm_address.address,cm_address.consignee,cm_address.phone FROM `cm_order` INNER JOIN cm_address ON cm_order.address = cm_address.address_id  WHERE ( cm_order.user_id =6 and cm_order.status = 4  ) ORDER BY create_time desc LIMIT 0,5   [ RunTime:0.0390s ]
+SQL: SHOW COLUMNS FROM `cm_cart` [ RunTime:0.0396s ]
+SQL: SELECT * FROM `cm_cart` WHERE ( 23 )  [ RunTime:0.0378s ]
+SQL: SHOW COLUMNS FROM `cm_goods` [ RunTime:0.0409s ]
+SQL: SELECT * FROM `cm_goods` WHERE `goods_id` = null LIMIT 1   [ RunTime:0.0395s ]
+SQL: SELECT * FROM `cm_cart` WHERE ( 47 )  [ RunTime:0.0390s ]
+SQL: SELECT * FROM `cm_goods` WHERE `goods_id` = null LIMIT 1   [ RunTime:0.0386s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001374s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001730s ]
+NOTIC: [8] Use of undefined constant goods - assumed 'goods' D:\Visual-NMP-x64\www\work\jilian\luomas\Application\Runtime\Cache\Wx\2be037a9f947473efac7af60ed98147d.php 第 271 行.
+NOTIC: [8] Use of undefined constant goods_img - assumed 'goods_img' D:\Visual-NMP-x64\www\work\jilian\luomas\Application\Runtime\Cache\Wx\2be037a9f947473efac7af60ed98147d.php 第 271 行.
+NOTIC: [8] Use of undefined constant goods - assumed 'goods' D:\Visual-NMP-x64\www\work\jilian\luomas\Application\Runtime\Cache\Wx\2be037a9f947473efac7af60ed98147d.php 第 271 行.
+NOTIC: [8] Use of undefined constant goods_img - assumed 'goods_img' D:\Visual-NMP-x64\www\work\jilian\luomas\Application\Runtime\Cache\Wx\2be037a9f947473efac7af60ed98147d.php 第 271 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.048957s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.049273s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000621s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000891s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000543s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000824s ]
+
+[ 2017-08-08T13:59:10+08:00 ] 127.0.0.1 /Order/index/type/pull-icon@2x.png
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000058s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000504s ]
+
+[ 2017-08-08T13:59:12+08:00 ] 127.0.0.1 /Order/index/type/6.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000057s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000481s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000438s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001332s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002247s ]
+SQL: SHOW COLUMNS FROM `cm_order` [ RunTime:0.0391s ]
+SQL: SELECT cm_order.*,cm_address.address,cm_address.consignee,cm_address.phone FROM `cm_order` INNER JOIN cm_address ON cm_order.address = cm_address.address_id  WHERE ( cm_order.user_id =6 and cm_order.status = 6  ) ORDER BY create_time desc LIMIT 0,5   [ RunTime:0.0444s ]
+SQL: SHOW COLUMNS FROM `cm_cart` [ RunTime:0.0394s ]
+SQL: SELECT * FROM `cm_cart` WHERE ( 25 )  [ RunTime:0.0393s ]
+SQL: SHOW COLUMNS FROM `cm_goods` [ RunTime:0.0387s ]
+SQL: SELECT * FROM `cm_goods` WHERE `goods_id` = null LIMIT 1   [ RunTime:0.0380s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001296s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001609s ]
+NOTIC: [8] Use of undefined constant goods - assumed 'goods' D:\Visual-NMP-x64\www\work\jilian\luomas\Application\Runtime\Cache\Wx\2be037a9f947473efac7af60ed98147d.php 第 271 行.
+NOTIC: [8] Use of undefined constant goods_img - assumed 'goods_img' D:\Visual-NMP-x64\www\work\jilian\luomas\Application\Runtime\Cache\Wx\2be037a9f947473efac7af60ed98147d.php 第 271 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.044744s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.045055s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000455s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000730s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000403s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000704s ]
+
+[ 2017-08-08T13:59:12+08:00 ] 127.0.0.1 /Order/index/type/pull-icon@2x.png
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000105s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001234s ]
+
+[ 2017-08-08T14:01:08+08:00 ] 127.0.0.1 /Order/index/type/0.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000062s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000821s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000724s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001944s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003127s ]
+SQL: SHOW COLUMNS FROM `cm_order` [ RunTime:0.0520s ]
+SQL: SELECT cm_order.*,cm_address.address,cm_address.consignee,cm_address.phone FROM `cm_order` INNER JOIN cm_address ON cm_order.address = cm_address.address_id  WHERE ( cm_order.user_id =6   ) ORDER BY create_time desc LIMIT 0,5   [ RunTime:0.0417s ]
+SQL: SHOW COLUMNS FROM `cm_cart` [ RunTime:0.0767s ]
+SQL: SELECT * FROM `cm_cart` WHERE ( 16 )  [ RunTime:0.0413s ]
+SQL: SHOW COLUMNS FROM `cm_goods` [ RunTime:0.0702s ]
+SQL: SELECT * FROM `cm_goods` WHERE `goods_id` = null LIMIT 1   [ RunTime:0.0416s ]
+SQL: SELECT * FROM `cm_cart` WHERE ( 17 )  [ RunTime:0.0391s ]
+SQL: SELECT * FROM `cm_goods` WHERE `goods_id` = null LIMIT 1   [ RunTime:0.0403s ]
+SQL: SELECT * FROM `cm_cart` WHERE ( 19 )  [ RunTime:0.0388s ]
+SQL: SELECT * FROM `cm_goods` WHERE `goods_id` = null LIMIT 1   [ RunTime:0.0391s ]
+SQL: SELECT * FROM `cm_cart` WHERE ( 20 )  [ RunTime:0.0409s ]
+SQL: SELECT * FROM `cm_goods` WHERE `goods_id` = null LIMIT 1   [ RunTime:0.0384s ]
+SQL: SELECT * FROM `cm_cart` WHERE ( 21 )  [ RunTime:0.0381s ]
+SQL: SELECT * FROM `cm_goods` WHERE `goods_id` = null LIMIT 1   [ RunTime:0.0461s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001312s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001670s ]
+NOTIC: [8] Use of undefined constant goods - assumed 'goods' D:\Visual-NMP-x64\www\work\jilian\luomas\Application\Runtime\Cache\Wx\2be037a9f947473efac7af60ed98147d.php 第 271 行.
+NOTIC: [8] Use of undefined constant goods_img - assumed 'goods_img' D:\Visual-NMP-x64\www\work\jilian\luomas\Application\Runtime\Cache\Wx\2be037a9f947473efac7af60ed98147d.php 第 271 行.
+NOTIC: [8] Use of undefined constant goods - assumed 'goods' D:\Visual-NMP-x64\www\work\jilian\luomas\Application\Runtime\Cache\Wx\2be037a9f947473efac7af60ed98147d.php 第 271 行.
+NOTIC: [8] Use of undefined constant goods_img - assumed 'goods_img' D:\Visual-NMP-x64\www\work\jilian\luomas\Application\Runtime\Cache\Wx\2be037a9f947473efac7af60ed98147d.php 第 271 行.
+NOTIC: [8] Use of undefined constant goods - assumed 'goods' D:\Visual-NMP-x64\www\work\jilian\luomas\Application\Runtime\Cache\Wx\2be037a9f947473efac7af60ed98147d.php 第 271 行.
+NOTIC: [8] Use of undefined constant goods_img - assumed 'goods_img' D:\Visual-NMP-x64\www\work\jilian\luomas\Application\Runtime\Cache\Wx\2be037a9f947473efac7af60ed98147d.php 第 271 行.
+NOTIC: [8] Use of undefined constant goods - assumed 'goods' D:\Visual-NMP-x64\www\work\jilian\luomas\Application\Runtime\Cache\Wx\2be037a9f947473efac7af60ed98147d.php 第 271 行.
+NOTIC: [8] Use of undefined constant goods_img - assumed 'goods_img' D:\Visual-NMP-x64\www\work\jilian\luomas\Application\Runtime\Cache\Wx\2be037a9f947473efac7af60ed98147d.php 第 271 行.
+NOTIC: [8] Use of undefined constant goods - assumed 'goods' D:\Visual-NMP-x64\www\work\jilian\luomas\Application\Runtime\Cache\Wx\2be037a9f947473efac7af60ed98147d.php 第 271 行.
+NOTIC: [8] Use of undefined constant goods_img - assumed 'goods_img' D:\Visual-NMP-x64\www\work\jilian\luomas\Application\Runtime\Cache\Wx\2be037a9f947473efac7af60ed98147d.php 第 271 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.054332s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.054653s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000802s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001077s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000698s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000988s ]
+
+[ 2017-08-08T14:01:09+08:00 ] 127.0.0.1 /Order/index/type/pull-icon@2x.png
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000059s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000489s ]
+

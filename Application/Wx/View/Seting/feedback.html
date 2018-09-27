@@ -1,0 +1,33 @@
+<extend name="Public:base" />
+<block name="main">
+    <style>
+        .member-box{margin-top: 3.5rem;}
+    </style>
+    <include file="Public:footer" current="member"/>
+    <div class="header-panel">
+        <a href="javascript:goback()" class="go-back"></a>
+        意见反馈
+    </div>
+    <div class="member-box">
+      <form action="{:U('')}" method = 'post' id='formid' >
+        
+      
+        <div class='area-col'>
+            <textarea name='content' placeholder='请输入反馈意见'></textarea>
+        </div>
+        <div class='btn-col'>
+          <!--<input type="submit" value="意见" class="a-btn"  />-->
+            <a class='a-btn' id="feedback" onclikc="">意见</a>
+        </div>
+        </form>
+    </div>
+</block>
+<block name="js-con">
+    <script>
+       $(function () {
+            $("#feedback").click(function () {
+              document.getElementById("formid").submit();
+            });
+        });
+    </script>
+</block>

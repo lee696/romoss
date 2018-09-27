@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ktest</title>
+</head>
+<body>
+<textarea name="content1" style="width:700px;height:200px;visibility:hidden;"></textarea>
+
+<script charset="utf-8" src="__COMMON_JS__/jquery.min.js"></script>
+<script charset="utf-8" src="__K_EDITOR__/kindeditor.js"></script>
+<script charset="utf-8" src="__K_EDITOR__/lang/zh_CN.js"></script>
+<script charset="utf-8" src="__K_EDITOR__/plugins/code/prettify.js"></script>
+<script>
+    var editor1;
+    KindEditor.ready(function(K) {
+        editor1 = K.create('textarea[name="content1"]', {
+            cssPath : '../plugins/code/prettify.css',
+            uploadJson : '{:U("Admin/File/upload_json")}',
+            fileManagerJson : '{:U("Admin/File/file_manager_json")}',
+            allowFileManager : true,
+            afterCreate : function() {
+                var self = this;
+                K.ctrl(document, 13, function() {
+                    self.sync();
+                    K('textarea[name=content1]')[0].submit();
+                });
+                K.ctrl(self.edit.doc, 13, function() {
+                    self.sync();
+                    K('textarea[name=content1]')[0].submit();
+                });
+
+            }
+        });
+        prettyPrint();
+    });
+</script>
+
+</body>
+</html>

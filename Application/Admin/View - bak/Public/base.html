@@ -1,0 +1,51 @@
+<!doctype html>
+<html class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>{:C('WEB_CONFIG.SITENAME')}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta name="renderer" content="webkit">
+        <meta http-equiv="Cache-Control" content="no-siteapp" />
+        <link rel="icon" type="image/png" href="/favicon.png">
+        <link rel="apple-touch-icon-precomposed" href="/app-icon72x72@2x.png">
+        <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+        <link rel="stylesheet" href="__AMAZEUI__/css/amazeui.min.css"/>
+        <link rel="stylesheet" href="__ADMIN_CSS__/admin.css?__T__">
+        <style>.uiu-box>img{max-width:100%;}</style>
+        <block name="css-con"></block>
+    </head>
+    <body>
+        <include file="Public:header"/>
+        <div class="admin-content">
+            <div class="am-cf admin-main">
+                <include file="Public/left-sidebar" />
+                <div class="admin-content">
+                    <div class="am-cf am-padding">
+                        <block name="main"></block>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <include file="Public/foot" />
+        <script src="__COMMON_JS__/jquery.min.js"></script>
+        <script src="__AMAZEUI__/js/amazeui.min.js"></script>
+        <script src="__AMAZEUI__/js/handlebars.min.js"></script>
+        <script src="__LAYER__/layer.js"></script>
+        <script>
+            $('.sidebar-switch').click(function(){
+                $(this).children('.am-list').toggleClass('am-in');
+            });
+            function doAjax(res, callback){
+                if(res.status == 0){
+                    if($.isFunction(callback)){
+                        callback(res.info);
+                    }
+                }else{
+                    layer.msg(res.info);
+                }
+            }
+        </script>
+        <block name="js-con"></block>
+    </body>
+</html>

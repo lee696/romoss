@@ -1,0 +1,105 @@
+<extend name="Public:base" />
+<block name="main">
+    <div class="login-panel">
+        <div class="logo-panel">
+            <img src="__WX_IMG__/logo.png" alt="罗马仕" title="罗马仕">
+        </div>
+        <div class="login-container">
+            <label class="login-tel input-con">
+                <input type="tel" placeholder="请输入手机号码" autocomplete="off" maxlength="11">
+            </label>
+            <label class="login-code input-con">
+                <input type="tel" placeholder="请输入验证码" maxlength="4">
+                <a class="send-code lock" href="javascript:" tabindex="-1">获取验证码</a>
+            </label>
+        </div>
+        <a class="lxb-btn lxb-full-btn back-blue login-btn lock">登录</a>
+        <div class="tips-agreement">
+            <label class="lxb-checkbox">
+                <input type="checkbox" id="agreement" checked><i></i>
+            </label>
+            <label for="agreement">
+                同意<a href="{:U('agreement')}">《优选师服务协议》</a>
+            </label>
+        </div>
+        <div class="bottom-nav">
+            <a href="{:U('plogin', ['redirect' => I('redirect')])}">密码登录</a>
+            <a href="{:U('reg', ['redirect' => I('redirect')])}">注册</a>
+        </div>
+    </div>
+</block>
+<block name="js-con">
+    <script>
+        $(function(){
+            var _redirect = "{$redirect}";
+            var _login = "{:U('phoneLogin')}";
+            var _send_code = "{:U('sendLoginCode')}";
+            var $phone = $('.login-tel input');
+            var $code = $('.login-code input');
+            var $sendCode = $('.send-code');
+            var $login = $('.login-btn');
+            var $agreement = $('#agreement');
+            var _code_time = 60;
+            $phone.keyup(checkSendBtn);
+            $phone.add($code).add($agreement).keyup(checkCodeBtn);
+            
+            $agreement.change(checkCodeBtn);
+            $sendCode.click(function(){
+                if($(this).hasClass('lock')){
+                    return false;
+                }
+                $.post(_send_code, {phone : $phone.val()},function(res){
+                    doAjax(res, function(){
+                        setCodeTime();
+                        $code.focus();
+                    });
+                });
+            });
+            $login.click(function(){
+                if($(this).hasClass('lock')){
+                    return false;
+                }
+                $.post(_login, {phone : $phone.val(), code : $code.val()}, function(res){
+                    doAjax(res, function(){
+                        var link = "{:U('Index/index')}";
+                        if(_redirect){
+                            $phone.val('');
+                            link = _redirect;
+                        }
+                        location.href = link;
+                    });
+                });
+            });
+            function checkSendBtn(){
+                if(isPhone($phone.val())){
+                    $sendCode.removeClass('lock');
+                }else{
+                    $sendCode.addClass('lock');
+                }
+            }
+            function checkCodeBtn(){
+                if(isPhone($phone.val()) && $code.val().length == 4 && $agreement.is(':checked')){
+                    $login.removeClass('lock');
+                }else{
+                    $login.addClass('lock');
+                }
+            }
+            function setCodeTime(time){
+                if(typeof time == 'undefined'){
+                    time = _code_time;
+                }
+                if(time == 0){
+                    $sendCode.removeClass('active');
+                    $sendCode.text('获取验证码');
+                    checkSendBtn();
+                }else{
+                    $sendCode.addClass('lock').addClass('active').removeClass('loading');
+                    $sendCode.text('(' + time + ')重新获取');
+                    setTimeout(function(){
+                        setCodeTime(time - 1);
+                    }, 1000);
+                }
+            }
+        });
+    </script>
+</block>

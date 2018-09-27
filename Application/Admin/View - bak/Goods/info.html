@@ -1,0 +1,426 @@
+<extend name="Public:base"/>
+<block name="main">
+    <div class="am-cf">
+        <div class="am-fl am-cf"><strong class="am-text-lg">标品商品</strong> / <small class="am-text-primary"><if condition="I('goods_id')">编辑<else/>新增</if></small></div>
+    </div>
+    <div class="am-panel am-panel-default am-margin-top">
+        <div class="am-panel-bd">
+            <div class="am-g">
+                <div class="am-u-sm-12">
+                    <form class="info-from am-form am-form-horizontal" method="post" onsubmit="return false;">
+                        <div class="am-form-group">
+                            <label for="goods_name" class="am-u-sm-3 am-form-label require">商品名称:</label>
+                            <div class="am-u-sm-6 am-u-md-pull-3">
+                                <input type="text" name="goods_name" value= "{$info.goods_name}" id="goods_name" placeholder="商品名称">
+                            </div>
+                        </div>
+                        <div class="am-form-group">
+                            <label for="goods_no" class="am-u-sm-3 am-form-label">商品编号:</label>
+                            <div class="am-u-sm-3">
+                                <input type="text" name="goods_no" value= "{$info.goods_no}" id="goods_no" placeholder="商品编号">
+                            </div>
+                            <p class="am-u-sm-6 form-label-tips">如果您不输入商品编号，系统将自动生成一个唯一的编号。</p>
+                        </div>
+                        <div class="am-form-group">
+                            <label class="am-u-sm-3 am-form-label require">商品规格:</label>
+                            <div class="am-u-sm-9">
+                                <div class="am-form-group">
+                                    <label class="am-inline-block am-form-label" for="sku_name">规格名称:</label>
+                                    <div class="am-inline-block">
+                                        <input type="text" name="sku_name" value= "{$info.sku_name}" id="sku_name" placeholder="规格名称">
+                                    </div>
+                                </div>
+                                <div class="am-panel am-panel-default">
+                                    <div class="am-panel-bd">
+                                        <div class="sku-box"></div>
+                                        <a href="javascript:" class="am-btn am-btn-primary am-radius am-btn-xs add-sku"><span class="am-icon-plus"></span> 添加规格值</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="am-form-group">
+                            <label for="price" class="am-u-sm-3 am-form-label require">售价:</label>
+                            <div class="am-u-sm-3 am-u-md-pull-6">
+                                <input type="number" name="price" min="0" value="{$info.price}" id="price" placeholder="售价">
+                            </div>
+                        </div>
+                        <div class="am-form-group">
+                            <label for="market_price" class="am-u-sm-3 am-form-label">市场价:</label>
+                            <div class="am-u-sm-3 am-u-md-pull-6">
+                                <input type="number" name="market_price"  min="0" value="{$info.market_price}" id="market_price" placeholder="市场价">
+                            </div>
+                        </div>
+                        <div class="am-form-group">
+                            <label for="market_price" class="am-u-sm-3 am-form-label">库存预警值:</label>
+                            <div class="am-u-sm-3">
+                                <input type="number" name="warn_num" value="{$info.warn_num}"  min="0" id="warn_num" placeholder="库存预警值">
+                            </div>
+                            <p class="am-u-sm-6 form-label-tips">当库存为0，前台会显示</p>
+                        </div>
+                        <div class="am-form-group">
+                            <label for="market_price" class="am-u-sm-3 am-form-label">商品详情:</label>
+                            <div class="am-u-sm-9">
+                                <textarea name="desc" id="desc" style="width:100%;height:200px;visibility:hidden;">{$info.desc}</textarea>
+                            </div>
+                        </div>
+                        <div class="am-form-group">
+                            <label class="am-u-sm-3 am-form-label">运费设置：</label>
+                            <div class="am-u-sm-9">
+                                <label class="am-inline-block am-form-label" for="shipping_fee">首件：</label>
+                                <div class="am-inline-block">
+                                    <input  type="number" name="shipping_fee" min="0" value="{$info.shipping_fee}" id="shipping_fee" placeholder="首件">
+                                </div>
+                                <label class="am-inline-block am-form-label am-margin-left" for="append_fee">之后每件：</label>
+                                <div class="am-inline-block">
+                                    <input  type="number" name="append_fee" min="0" value="{$info.append_fee}" id="append_fee" placeholder="之后每件">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="am-form-group">
+                            <label for="is_on" class="am-u-sm-3 am-form-label">上架:</label>
+                            <div class="am-u-sm-6 am-u-md-pull-3">
+                                <label class="label-rc-box">
+                                    <input type="radio" id="is_on" name="is_on" value="1">
+                                    立即上架
+                                </label>
+                                <label class="label-rc-box">
+                                    <input type="radio" name="is_on" value="0" >
+                                    暂不上架
+                                </label>
+                            </div>
+                        </div>
+                        <div class="am-form-group">
+                            <label for="is_on" class="am-u-sm-3 am-form-label">商品标签:</label>
+                            <div class="am-u-sm-6 am-u-md-pull-3">
+                                <div class="am-panel am-panel-default">
+                                    <div class="am-panel-bd">
+                                        <p>请选择商品标签</p>
+                                        <div class="goods-label-panel">
+                                            <div class="goods-label">
+                                                <volist name="info.goods_label" id="vo">
+                                                    <a href="javascript:">{$vo}<i class="close" onclick="delLabel(this)"></i></a>
+                                                </volist>
+                                            </div>
+                                            <a href="javascript:" class="am-btn am-btn-default am-radius am-btn-xs btn-add-label"><span class="am-icon-plus"></span> 添加标签</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="am-form-group">
+                            <label for="is_on" class="am-u-sm-3 am-form-label">商品服务:</label>
+                            <div class="am-u-sm-6 am-u-md-pull-3">
+                                <label class="label-rc-box">
+                                    <input type="checkbox" name="goods_service" value="1" <if condition="in_array(1, $info['goods_service'])">checked</if>> 售后保障
+                                </label>
+                                <label>
+                                    <input type="checkbox" name="goods_service" value="2" <if condition="in_array(2, $info['goods_service'])">checked</if>> 正品保障
+                                </label class="label-rc-box">
+                                <label class="label-rc-box">
+                                    <input type="checkbox" name="goods_service" value="3" <if condition="in_array(3, $info['goods_service'])">checked</if>> 支持自提
+                                </label>
+                                <label class="label-rc-box">
+                                    <input type="checkbox" name="goods_service" value="4" <if condition="in_array(4, $info['goods_service'])">checked</if>> 极速发货
+                                </label>
+                            </div>
+                        </div>
+                        <div class="am-form-group">
+                            <label for="is_on" class="am-u-sm-3 am-form-label">商品服务:</label>
+                            <div class="am-u-sm-6 am-u-md-pull-3">
+                                <label>
+                                    <input type="radio" value="1" checked> 支付减库存  <span class="form-label-tips am-margin-left">卖家下单并完成支付操作后减少库存，存在<span class="font-red">超卖风险</span></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="am-form-group">
+                            <label for="remark" class="am-u-sm-3 am-form-label">商品备注：</label>
+                            <div class="am-u-sm-6 am-u-md-pull-3">
+                                <textarea name="remark" id="remark" placeholder="商品备注">{$info.remark}</textarea>
+                                <p class="form-label-tips">备注仅供自己查看</p>
+                            </div>
+                        </div>
+
+                        <div class="am-form-group">
+                            <div class="am-u-sm-9 am-u-sm-push-3">
+                                <input type="submit" class="submit am-btn am-btn-primary" value="保存">
+                                <button type="button" class="cancel-btn am-btn am-btn-primary">取消</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- -->
+        <div class="am-modal am-modal-prompt" tabindex="-1" id="label-prompt">
+            <div class="am-modal-dialog">
+                <div class="am-modal-hd">商品标签</div>
+                <div class="am-modal-bd">
+                    <input type="text" class="am-modal-prompt-input">
+                </div>
+                <div class="am-modal-footer">
+                    <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+                    <span class="am-modal-btn" data-am-modal-confirm>提交</span>
+                </div>
+            </div>
+        </div>
+</block>
+<block name="js-con">
+    <link rel="stylesheet" href="__K_EDITOR__/themes/default/default.css" />
+    <script src="__K_EDITOR__/kindeditor.js"></script>
+    <script src="__K_EDITOR__/lang/zh_CN.js"></script>
+    <script src="__K_EDITOR__/plugins/code/prettify.js"></script>
+    <script id="sku-template" type="text/x-handlebars-template">
+        <div class="sku-panel">
+            <div class="am-form-group">
+                <label class="am-inline-block am-form-label require">规格值:</label>
+                <div class="am-inline-block">
+                    <input type="text" name="sku_value" placeholder="规格值" value="{{sku_name}}">
+                </div>
+                <label class="am-inline-block am-form-label am-margin-left">库存:</label>
+                <div class="am-inline-block">
+                    <input type="text" name="sku_num"  placeholder="库存" value="{{sku_num}}">
+                </div>
+                <a href="javascript:" class="am-btn am-btn-default am-radius am-btn-xs am-margin-left btn-del-sku"><span class="am-icon-plus"></span> 删除</a>
+            </div>
+            <div class="am-form-group am-form-file">
+                <button type="button" class="am-btn am-btn-default am-btn-sm up-img">
+                    <i class="am-icon-cloud-upload"></i> 图片上传</button>
+                <p class="form-label-tips am-inline-block am-margin-left">尺寸640x640像素以上，大小2M以下，第1张为商品封面，最少1张，最多10张</p>
+                <input type="hidden" name="img" id="img" value="{$info.img}">
+                <div class="file-img">
+                    {{#each pic}}
+                        <div class="img" data-img="{{this}}" style="background-image: url({{this}})"><i class="del-img"></i></div>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+    </script>
+    <script>
+        var _goods_id = {:I('goods_id', 0)};
+        var _is_on = "{$info.is_on|default=1}";
+        var $is_on = $('[name=is_on]');
+        var $goods_name = $('#goods_name');
+        var $goods_no = $('#goods_no');
+        var $price = $('#price');
+        var $market_price = $('#market_price');
+        var $warn_num = $('#warn_num');
+        var $desc = $('#desc');
+        var $shipping_fee = $('#shipping_fee');
+        var $append_fee = $('#append_fee');
+        var $goods_service = $('[name=goods_service]');
+        var $remark = $('#remark');
+        var $addLabel = $('.btn-add-label');
+        var $labelPanel = $('.goods-label');
+        var $labelPrompt = $('#label-prompt');
+        var $addSku = $('.add-sku');
+        var $skuBox = $('.sku-box');
+        var $sku_name = $('#sku_name');
+        var skuTemplate = Handlebars.compile($("#sku-template").html());
+        var _editSku = {$info.sku_json|default='[]'};
+        _editSku.forEach(function(sku){
+           $skuBox.append(skuTemplate(sku));
+        });
+        // 初始化
+        $is_on.filter('[value=' + _is_on + ']').prop('checked', true);
+        $('.cancel-btn').click(function () {
+            history.go(-1);
+        });
+        // 编辑器
+        var editor;
+        KindEditor.ready(function(K) {
+            editor = K.create('#desc', {
+                cssPath : '__K_EDITOR__/plugins/code/prettify.css',
+                uploadJson : '{:U("Admin/File/upload_json")}',
+                fileManagerJson : '{:U("Admin/File/file_manager_json")}',
+                allowFileManager : true,
+                afterCreate : function() {
+                    var self = this;
+                    K.ctrl(document, 13, function() {
+                        self.sync();
+                        self.submit();
+                    });
+                    K.ctrl(self.edit.doc, 13, function() {
+                        self.sync();
+                        self.submit();
+                    });
+                }
+            });
+            prettyPrint();
+        });
+        // 规格
+        $addSku.click(function(){
+            $skuBox.append(skuTemplate());
+        });
+        /* 多图上传 */
+
+        KindEditor.ready(function(K) {
+            var uploadMul = K.editor({
+                allowFileManager : true,
+                cssPath : '__K_EDITOR__/plugins/code/prettify.css',
+                uploadJson : '{:U("Admin/File/upload_json")}',
+                fileManagerJson : '{:U("Admin/File/file_manager_json")}',
+            });
+            $skuBox.delegate('.up-img', 'click', function() {
+                var $dom = $(this);
+                v = $dom;
+                var $imgPanel = $dom.siblings('.file-img');
+                var _hadUp = $imgPanel.find('.img').length;
+                if(_hadUp >= 10){
+                    layer.msg('已经上传了10张图片了');
+                    return false;
+                }
+                uploadMul.loadPlugin('multiimage', function() {
+                    uploadMul.plugin.multiImageDialog({
+                        clickFn : function(urlList) {
+                            var _nowUp = urlList.length + _hadUp;
+                            if(_nowUp > 10){
+                                layer.msg('最多上传10张图片');
+                                return false;
+                            }else{
+                                K.each(urlList, function(i, data) {
+                                    $imgPanel.append('<div class="img" data-img="' + data.url + '" style="background-image: url(' + data.url + ')"><i class="del-img"></i></div>');
+                                });
+                            }
+                            uploadMul.hideDialog();
+                        }
+                    });
+                });
+            });
+            $skuBox.delegate('.del-sku', 'click', function(){
+               $(this).closest('.sku-panel').remove();
+            });
+            $skuBox.delegate('.del-img', 'click', function(){
+               $(this).closest('.img').remove();
+            });
+
+
+
+        });
+        // 标签
+        $addLabel.click(function(){
+            $labelPrompt.modal({
+                relatedTarget: this,
+                onConfirm: function(e) {
+                    if(!e.data){
+                        return false;
+                    }
+                    $labelPanel.append('<a href="javascript:">'+e.data+'<i class="close" onclick="delLabel(this)"></i></a>');
+                }
+            });
+        });
+        function delLabel(dom){
+            $(dom).closest('a').remove();
+        }
+
+
+        $('.info-from').submit(function(){
+            editor.sync();
+            var data = {};
+            var _goods_name = $.trim($goods_name.val());
+            var _goods_no = $.trim($goods_no.val());
+            var _price = parseFloat($price.val()) | 0;
+            var _market_price = parseFloat($market_price.val()) | 0;
+            var _warn_num = parseInt($warn_num.val()) | 0;
+            var _desc = $.trim($desc.val());
+            var _shipping_fee = parseFloat($shipping_fee.val()) | 0;
+            var _append_fee = parseFloat($append_fee.val()) | 0;
+            var _is_on = $is_on.filter(':checked').val();
+            var _remark = $.trim($remark.val());
+            var _goods_service = [];
+            var _goods_label = [];
+            var _sku_name = $.trim($sku_name.val());
+            var _sku = [];
+            var $sku = $('.sku-panel');
+            if(_goods_name.length == 0){
+                $goods_name.focus();
+                layer.tips('请输入商品名称', $goods_name);
+                return false;
+            }
+            if(_price <= 0){
+                $price.focus();
+                layer.tips('商品价格必须大于0', $price);
+                return false;
+            }
+            if(_sku_name.length == 0){
+                $sku_name.focus();
+                layer.tips('请填写规格名', $sku_name);
+                return  false;
+            }
+            if($sku.length == 0){
+                $skuBox.focus();
+                layer.msg('至少上传一个sku');
+                layer.tips('请上传商品sku', $skuBox);
+                return  false;
+            }
+            var _check_sku = true;
+            $sku.each(function(){
+                var $dom = $(this);
+                var $skuValue = $dom.find('[name=sku_value]');
+                var $skuNum = $dom.find('[name=sku_num]');
+                var $img = $dom.find('.img');
+                if($.trim($skuValue.val()).length == 0){
+                    $skuValue.focus();
+                    layer.tips('请填写规格值', $skuValue);
+                    _check_sku = false;
+                    return  false;
+                }
+                if($skuNum.val() < 0){
+                    $skuNum.focus();
+                    layer.tips('商品库存不能小于0', $skuNum);
+                    _check_sku = false;
+                    return  false;
+                }
+                if($img.length == 0){
+                    $dom.find('.up-img').focus();
+                    layer.tips('至少上传一张商品图', $dom.find('.up-img'));
+                    _check_sku = false;
+                    return  false;
+                }
+                var skuData = {sku_name: $.trim($skuValue.val()), sku_num: $skuNum.val()};
+                skuData.pic = [];
+                $img.each(function(){
+                    skuData.pic.push($(this).attr('data-img'));
+                });
+                skuData.img = skuData.pic[0];
+                _sku.push(skuData);
+            });
+            if(!_check_sku){
+                return false;
+            }
+            $labelPanel.find('a').each(function(){
+                _goods_label.push($(this).text());
+            });
+            $goods_service.filter(':checked').each(function(){
+                _goods_service.push(parseInt($(this).val()));
+            });
+            data.goods_name = _goods_name;
+            data.goods_no = _goods_no;
+            data.price = _price;
+            data.market_price = _market_price;
+            data.warn_num = _warn_num;
+            data.desc = _desc;
+            data.shipping_fee = _shipping_fee;
+            data.append_fee = _append_fee;
+            data.is_on = _is_on;
+            data.remark = _remark;
+            data.goods_service = _goods_service;
+            data.goods_label = _goods_label;
+            data.sku_name = _sku_name;
+            data.sku = _sku;
+            if(_goods_id){
+                data.goods_id =_goods_id;
+            }
+            $.post("{:U('operation')}", data, function(res){
+               doAjax(res, function(){
+                   if(_goods_id){
+                       layer.msg('添加成功');
+                   }else{
+                       layer.msg('已保存');
+                   }
+                   location.href = "{:U('index')}";
+               });
+            });
+        });
+    </script>
+</block>

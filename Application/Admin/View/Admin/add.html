@@ -1,0 +1,74 @@
+<extend name="Public:base"/>
+<block name="local-title">
+    <li>
+        <a href="{:U('index')}">用户管理</a>
+    </li>
+    <li><if condition="I('slide_id')">编辑<else/>用户添加</if></li>
+</block>
+<block name="main">
+    <div class="am-panel am-panel-default am-margin-top">
+        <div class="am-panel-bd">
+            <div class="am-g">
+                <div class="am-u-sm-12">
+                    <form class="J_slide_form am-form am-form-horizontal" method="post" onsubmit="return false;">
+
+                        <div class="am-form-group">
+                            <label for="title" class="am-u-sm-3 am-form-label require">账号:</label>
+                            <div class="am-u-sm-6 am-u-md-pull-3">
+                                <input type="text" name="username" value= "" id="name">
+                            </div>
+                        </div>
+                        <div class="am-form-group">
+                            <label for="link" class="am-u-sm-3 am-form-label require">密码:</label>
+                            <div class="am-u-sm-6 am-u-md-pull-3">
+                                <input type="password" name="password" value="" id="pwd">
+                            </div>
+                        </div>
+                            <div class="am-form-group">
+                            <label for="link" class="am-u-sm-3 am-form-label require">角色:</label>
+                            <div class="am-u-sm-6 am-u-md-pull-3">
+                                <select name="pid" id="pid" class="form-control">
+                                    <option value="0">|--顶级权限</option>
+                                    <volist name="tree" id="vo">
+                                        <option value="{$vo.role_id}">|{$vo.lev|str_repeat="--",###}{$vo.role_name}</option>
+                                    </volist>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="am-form-group">
+                            <div class="am-u-sm-9 am-u-sm-push-3">
+                                <input type="submit" class="submit am-btn am-btn-primary" value="提交">
+                                <button type="button" class="cancel-btn am-btn am-btn-primary">取消</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+</block>
+<block name="js-con">
+    <link rel="stylesheet" href="__K_EDITOR__/themes/default/default.css" />
+    <script src="__K_EDITOR__/plugins/code/prettify.js"></script>
+    <script>
+        $('.cancel-btn').click(function () {
+            history.go(-1);
+        });
+        $('.J_slide_form').submit(function(){
+            var $name = $('#name').val();
+            var $pwd = $('#pwd').val();
+            var $role_id = $('#pid').val();
+            var data = {};
+            data.name = $name;
+            data.pwd = $pwd;
+            data.role_id = $role_id;
+            $.post("{:U('Admin/add')}", data, function(res){
+                layer.msg(res.content);
+                location.href = "{:U('index')}";
+/*               doAjax(res, function(){
+                       layer.msg(res.content);
+                   location.href = "{:U('index')}";
+               });*/
+            });
+        });
+    </script>
+</block>

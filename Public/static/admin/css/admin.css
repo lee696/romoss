@@ -1,0 +1,151 @@
+/**
+ * admin.css
+ */
+body{
+    overflow: auto;
+}
+.old-tpl,
+.old-tpl *,
+.am-btn,
+.am-btn-sm,
+.old-tpl .am-form input[type=number],
+.old-tpl .am-form input[type=search],
+.old-tpl .am-form input[type=text],
+.old-tpl .am-form input[type=password],
+.old-tpl .am-form input[type=datetime],
+.old-tpl .am-form input[type=datetime-local],
+.old-tpl .am-form input[type=date],
+.old-tpl .am-form input[type=month],
+.old-tpl .am-form input[type=time],
+.old-tpl .am-form input[type=week],
+.old-tpl .am-form input[type=email],
+.old-tpl .am-form input[type=url],
+.old-tpl .am-form input[type=tel],
+.old-tpl .am-form input[type=color],
+.old-tpl .am-form select,
+.old-tpl .am-form textarea, .am-form-field{
+    font-size: 1rem;
+}
+
+.am-form.am-line-label input[type=number],
+.am-form.am-line-label input[type=search],
+.am-form.am-line-label input[type=text],
+.am-form.am-line-label input[type=password],
+.am-form.am-line-label input[type=datetime],
+.am-form.am-line-label input[type=datetime-local],
+.am-form.am-line-label input[type=date],
+.am-form.am-line-label input[type=month],
+.am-form.am-line-label input[type=time],
+.am-form.am-line-label input[type=week],
+.am-form.am-line-label input[type=email],
+.am-form.am-line-label input[type=url],
+.am-form.am-line-label input[type=tel],
+.am-form.am-line-label input[type=color],
+.am-form.am-line-label select,
+.am-form.am-line-label textarea, .am-form-field{
+    display: inline-block;
+    width: auto;
+}
+.am-form.am-line-label label{
+    margin-right: 2em;
+}
+.am-form select{
+    padding-right: 1.5em;
+}
+.label-tips{
+    display: inline-block;
+    margin-left: 2em;
+}
+.file-img image{
+    width: 100%;
+}
+.am-form-group label.require:before{
+    content: '*';
+    color: red;
+    margin-right: 1em;
+}
+.am-list > li [class*=am-icon-]{
+    margin-right: .8em;
+}
+.form-label-tips{
+    color: #999;
+    padding: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: 29px;
+    font-weight: normal;
+}
+.font-red{
+    color: red;
+}
+.label-rc-box{
+    margin-right: 2em;
+    margin-bottom: 0;
+    padding-top: .6em;
+    cursor: pointer;
+}
+.label-rc-box input[type=radio],.label-rc-box input[type=checkbox]{
+    margin-right: .4em;
+    vertical-align: top;
+}
+.goods-label{
+    display: inline-block;
+}
+.goods-label a{
+    position: relative;
+    display: inline-block;
+    border-radius: 4px;
+    padding: 4px 20px;
+    border: 1px solid #ddd;
+    margin-right: 1em;
+}
+.file-img .del-img,
+.goods-label .close{
+    position: absolute;
+    display: block;
+    border-radius: 50%;
+    width: 14px;
+    height: 14px;
+    line-height: 14px;
+    text-align: center;
+    right: -7px;
+    top: -7px;
+    background-color: #ff290a;
+    color: #fff;
+    font-style: normal;
+    cursor: pointer;
+}
+.file-img .del-img:before,
+.goods-label .close:before{
+    content: '×';
+}
+.file-img .del-img:hover,
+.goods-label .close:hover{
+    background-color: red;
+}
+.file-img:after{
+    content: '';
+    display: table;
+    clear: both;
+}
+.file-img .img{
+    position: relative;
+    border: 1px solid #ddd;
+    float: left;
+    width: 80px;
+    height: 80px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    margin: 5px;
+}
+
+
+.ke-dialog-default.ke-dialog,
+.ke-dialog-default.ke-dialog *,
+.ke-dialog-default.ke-dialog:before,
+.ke-dialog-default.ke-dialog:after,
+.ke-dialog-default.ke-dialog *:before,
+.ke-dialog-default.ke-dialog *:after{
+    box-sizing: content-box;
+}

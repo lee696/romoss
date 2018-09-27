@@ -1,0 +1,114 @@
+<extend name="Public:base"/>
+<block name="main">
+    <style>
+        html,body{
+            overflow: hidden;
+        }
+
+    </style>
+    <div class="header-panel">
+        <a href="javascript:goback()" class="go-back"></a>
+        <if condition="$address_id">编辑地址<else/>新增地址</if>
+    </div>
+    <div class="page-panel padding-header address-oper-box">
+        <div class="address-oper">
+            <div class="tail">
+                <span class="title">收货人</span>
+                <input type="text" class="consignee" value="{$address.consignee}" maxlength="16">
+            </div>
+            <div class="tail">
+                <span class="title">联系电话</span>
+                <input type="tel" class="phone" value="{$address.phone}" placeholder="保密" maxlength="11">
+            </div>
+            <div class="tail">
+                <span class="title">所在地区</span>
+                <input type="text" class="address" id="address" value="{$address.address.prov}{$address.address.city}{$address.address.region}" placeholder="请选择" readonly="" sytle="-webkit-user-select:none">
+                <input type="hidden" id="prov">
+                <input type="hidden" id="city">
+                <input type="hidden" id="region">
+            </div>
+            <div class="tail">
+                <span class="title addr-details">详细地址</span>
+                <textarea class="area" maxlength="50">{$address.address.area}</textarea>
+            </div>
+            <div class="tail">
+                <label class="lxb-checkbox">
+                    <input type="checkbox" id="is_default" <if condition="$address['is_default']">checked</if>><i></i>
+                </label>
+                <label for="is_default">设为默认</label>
+            </div>
+        </div>
+        <a class="lxb-btn lxb-full-btn back-blue login-btn">确定</a>
+    </div>
+</block>
+<block name="css-con">
+    <link rel="stylesheet" href="__WX__/LArea/LArea.css">
+</block>
+<block name="js-con">
+    <script src="__WX__/LArea/LAreaData1.js"></script>
+    <script src="__WX__/LArea/LAreaData2.js"></script>
+    <script src="__WX__/LArea/LArea.js"></script>
+    <script>
+        var area1 = new LArea();
+        area1.init({
+            'trigger': '#address',
+            'valueTo': '#prov',
+            'keys': {
+                id: 'id',
+                name: 'name'
+            },
+            'type': 1,
+            'data': LAreaData
+        });
+        var _address_id = {$address_id};
+        var redirect = '{$redirect}';
+        var $btn = $('.login-btn');
+        var $consignee = $('.consignee');
+        var $phone = $('.phone');
+        var $address = $('#address');
+        var $area = $('.area');
+        $btn.click(function(){
+            var data = {};
+            if($consignee.val().length == 0){
+                layer.msg('收货人不能为空');
+                return false;
+            }
+            if($phone.val() && (!isPhone($phone.val()) && !isTel($phone.val()))){
+                layer.msg('联系电话格式错误');
+                return false;
+            }
+            if($address.val().length == 0){
+                layer.msg('请填写您的所在地区');
+                return false;
+            }
+            if($area.val().length == 0){
+                layer.msg('请填写您的详细地址');
+                return false;
+            }
+            data.consignee = $consignee.val();
+            data.phone = $phone.val();
+            data.address = {};
+            data.address.area = $area.val();
+            var address = $address.val().split(',');
+            if(address[0]){
+                data.address.prov = address[0];
+            }
+            if(address[1]){
+                data.address.city = address[1];
+            }
+            if(address[2]){
+                data.address.region = address[2];
+            }
+            if(_address_id){
+                data.address_id = _address_id;
+            }
+            data.is_default = $('#is_default').prop('checked')?1:0;
+            $.post("{:U('operation')}", data, function(res){
+               doAjax(res, function(address_id){
+                    location.href = "{:U('index','',true,true)}?address_id=" + address_id + '&redirect=' + redirect;
+               });
+            });
+        });
+
+    </script>
+</block>

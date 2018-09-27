@@ -1,0 +1,57 @@
+<extend name="Public:base" />
+<block name="main">
+    <style>
+        .message-box ul{background: #fff;margin-top: 3.5rem;}
+        .message-box ul li{display:block;height:80px;}
+        .message-box ul li div{position:relative;margin:0;padding:15px 12px;}
+        .message-box ul li p{display: inline-block;}
+        .li-icon{width:50px;height:50px;position: relative;top:0;}
+        .message-cont{border-bottom:1px solid #DBE1EB;position:absolute;right: 12px;left:78px;top:20px;}
+        //.message-box .message-cont::last-child{border:none;}
+        .no-border{border:none;}
+        .message-icon{position:absolute;left:12px;top:18px;}
+        .message-title{font-size:16px;display: block;color:#404E58;line-height: normal;margin-bottom:8px;}
+        .message-desc{overflow: hidden;text-overflow:ellipsis;white-space: nowrap;font-size:13px;display: block;color:#ABB4BC;margin-bottom: 12px;line-height: normal}
+        .message-time{position:absolute;right:12px;top:25px;font-size: 12px;color:#A3ADC2;}
+    </style>
+    <div class="message-box">
+        <div class="header-panel">
+            <a href="javascript:goback()" class="go-back"></a>
+            消息
+        </div>
+        <ul>
+          <notempty name="list">
+          <volist name="list" id="vo">
+            <li>
+                <div>
+                    <p class="message-icon"><img class="li-icon" src="__WX_IMG__/system-notice.png"></p>
+                    <p class="message-cont">
+                      <a href="{:U('Message/details',array('id'=>$vo[id]))}">
+                            <span class="message-title">{$vo.title}</span>
+                            <span class="message-desc">{$vo.content}</span>
+                        </a>
+                    </p>
+                    <p class="message-time">{$vo.create_at}</p>
+                </div>
+            </li>
+          </volist>
+            <else />
+          </notempty>
+            
+<!--            <li>
+                <div>
+                    <p class="message-icon"><img class="li-icon" src="__WX_IMG__/order-notice.png"></p>
+                    <p class="message-cont no-border">
+                        <a href="{:U('Message/details')}">
+                            <span class="message-title">订单反馈</span>
+                            <span class="message-desc">你的照片不符合条件，正面照片需要重新拍照 </span>
+                        </a>
+                    </p>
+                    <p class="message-time">5分钟前</p>
+                </div>
+            </li>-->
+        </ul>
+
+    </div>
+</block>
+

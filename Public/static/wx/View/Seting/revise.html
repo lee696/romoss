@@ -1,0 +1,45 @@
+<extend name="Public:base" />
+<block name="main">
+    <style>
+        .member-box{margin-top: 3.5rem;}
+    </style>
+    <include file="Public:footer" current="member"/>
+    <div class="header-panel">
+        <a href="javascript:goback()" class="go-back"></a>
+        修改密码
+    </div>
+    <div class="member-box">
+       <form action="{:U('')}" method = 'post' id='formid' >
+        <div class='col'>
+            <input type='password' name='oldpws' placeholder='请输入原密码'minlength="6" maxlength="18" />
+        </div>
+        <div class='col'>
+            <input type='password' name='password' id='pws' placeholder='请输入新密码' minlength="6" maxlength="18"/>
+        </div>
+        <div class='col'>
+            <input type='password' name='repassword' id='repws' placeholder='请确认密码' minlength="6" maxlength="18"/>
+        </div>
+        <div class='btn-col'>
+            <a class='a-btn' id='sbt'>完成</a>
+        </div>
+       </form>
+    </div>
+</block>
+<block name="js-con">
+    <script>
+         $(function () {
+            $("#sbt").click(function () {
+              var pws=$('#pws').val();
+              var repws=$('#repws').val();
+              if(pws.length<6){
+                alert('密码长度不能小于6位!');
+              }
+              if(pws!=repws){
+                alert('二次输入的新密码不一样!');
+                return false;
+              }
+              document.getElementById("formid").submit();
+            });
+        });
+    </script>
+</block>

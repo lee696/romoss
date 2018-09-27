@@ -1,0 +1,187 @@
+/* 
+* @Author: xcw
+* @Date:   2017-07-22 11:56:33
+* @Last Modified by:   xcw
+* @Last Modified time: 2017-08-03 19:09:31
+*/
+
+.header-panel{
+    height: 3.7rem;
+    line-height: 3.7rem
+}
+/* 我的 */
+.member-box .avatar p{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+/* 登录 */
+.login-panel .res-btn{
+    margin: -2.8rem 6rem 0;
+    opacity: 1;
+}
+.login-panel .bottom-nav a{
+    border-color: #979ba2;
+}
+/* 设置 */
+
+/* 首页商品列表 */
+.goods-list a .goods-tail .img{
+    width: 6.8rem;
+    height: 13.28rem;
+    margin: 0 auto;
+}
+
+
+/* 定制页面 */
+.custom_bg .custom_box .custom_cont .goods_cont .goods_price{
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* 我的地址 */
+.addr-details{
+    vertical-align: text-top;
+}
+.addr-details span{
+    position: absolute;
+    top:0;
+}
+/* 首页轮播图 */
+.hd{ position:absolute; height:28px; line-height:28px; bottom:0; right:0; z-index:1; }
+.hd li{ display:inline-block; width:8px; height:8px; -webkit-border-radius:5px; -moz-border-radius:5px; border-radius:5px; background:#ccc; text-indent:-9999px; overflow:hidden; margin:0 6px;   }
+.hd li.on{ background:#fff;  }
+/* 个人资料 */
+
+/* 支付弹窗 */
+#float_box .float_box_cont{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 90% !important;
+    margin-top: 0 !important;
+    margin-left: 0 !important;
+}
+/* 基本资料 性别选择框 */
+#sex-actions .am-modal-actions-group{
+    margin: 0;
+}
+#sex-actions .am-btn-secondary{
+    font-size: 18px;
+    color: #414d58;
+    border-color: #fff;
+    background-color: #fff;
+}
+#sex-actions .am-list>li{
+    color: #414d58;
+    font-size: 18px;
+    border: none;
+    border-color: #cfd6e4;
+}
+#sex-actions .bg{
+    width: 100%;
+    height: 0.4rem;
+    background-color: #f3f3f9;
+}
+/* 商品详情 */
+.goods-desc .price-con{
+    color: #ed5f86;
+}
+.font-red{
+    color: #ed5f86;
+}
+.relation-goods a .goods-tail .title,.goods-list a .goods-tail .title,.goods-list a .goods-tail .tips,.sku-confirm-box .sku-confirm .goods-detail .title{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.sku-confirm-box .sku-confirm .goods-sku .sku-item a:nth-child(n+5){
+    margin-top: 1rem;
+}
+/* #slide-box.container-banner .slide-panel > li > img{
+    height: 39rem;
+    background-size: contain;
+}
+#slide-box .slide-panel > li > img{
+    display: block;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+} */
+/* 基本资料 时间控件 */
+input[name=birthday],input[name=sex]{
+    width: 0 !important;
+}
+.ios-select-widget-box header.iosselect-header{
+    background-color: #fff !important;
+}
+.ios-select-widget-box header.iosselect-header a.sure{
+    color: #31a9ff !important;
+}
+.ios-select-widget-box header.iosselect-header a.close{
+    color: #b6bbcc !important;
+}
+.ios-select-widget-box.olay > div,.ios-select-widget-box .iosselect-box,.ios-select-widget-box ul li{
+    background-color: #f6f7f8 !important;   
+}
+.ios-select-widget-box ul li,.ios-select-widget-box ul li.side1{
+    opacity: 1 !important;
+}
+.ios-select-widget-box ul li.at{
+    background-color: #fff !important;
+}
+.am-modal-actions-group .am-list>li{
+    -webkit-box-shadow: inset 0 1px 0  #cfd6e4 !important;
+    box-shadow: inset 0 1px 0 #cfd6e4 !important;
+}
+.member-box label{
+    display: block !important;
+    margin-bottom: 0 !important;
+}
+/* 支付成功 */  
+.succeed-box .succeed-info .pay-info span{
+    color: #ed5f86;
+}
+.succeed-box .order_detl{
+    color: #fff;
+}
+.succeed-box .continue{
+    color: #ed5f86;
+}
+/* 我的订单 */
+.order-box .or-title span{
+    color: #ed5f86 !important;
+}
+.order-box .or-goods-info{
+    color: #414d58 !important;
+}
+/* 评价 */
+.webuploader-pick{
+    background-color: #E0E4EB !important;
+}
+.comment-panel .module-cont .module-main .pj-imgs{
+    margin-top: 0rem;
+}
+.comment-panel .module-cont .module-main .pj-imgs div{
+    margin-top: 1rem;
+}
+/* 模态弹窗 */
+.modal-wrap{
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, .3);
+}
+.modal-wrap img{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    transform: translate(-50%, -50%);
+}

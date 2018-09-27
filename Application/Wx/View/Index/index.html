@@ -1,0 +1,53 @@
+<extend name="Public:base"/>
+<block name="main">
+    <include file="Public:footer" current="home"/>
+    <div class="header-panel">
+        <a href="{:U('Message/index')}" class="message"></a>
+        <a href="{:U('Index/scan-qr')}" class="scan"></a>
+        优选师
+    </div>
+    <div class="page-panel padding-header padding-footer">
+        <div id="slide-box">
+            <ul class="slide-panel">
+                <volist name="slide_list" id="slide">
+                    <li><a href="{$slide.link|default='javascript:'}" style="background-image:url({$slide.img})" title="{$slide.title}"></a></li>
+                </volist>
+            </ul>
+            <div class="hd">
+                <ul>
+                    <volist name="slide_list" id="slide">
+                        <li></li>
+                    </volist>
+                </ul>
+            </div>
+        </div>
+        <h2 class="module-title">精品推荐</h2>
+        <div class="goods-list">
+            <volist name="goods_list" id="goods">
+                <a href="{:U('Goods/index', ['goods_id' => $goods['goods_id']])}">
+                    <div class="goods-tail">
+                        <img class="img" src="{$goods.goods_img}" alt="{$goods.goods_name}" title="{$goods.goods_name}">
+                        <div class="title">{$goods.goods_name}</div>
+                        <div class="tips">{$goods.desc}</div>
+                        <div class="price-con">
+                            ￥{$goods.price}<s>￥{$goods.market_price}</s>
+                        </div>
+                    </div>
+                </a>
+            </volist>
+        </div>
+    </div>
+</block>
+<block name="js-con">
+    <script src="__WX_JS__/TouchSlide.js"></script>
+    <script>
+        TouchSlide({
+            slideCell: "#slide-box",
+            // titCell: ".hd ul",
+            mainCell: ".slide-panel",
+            effect: 'leftLoop',
+            autoPlay: true,
+            interTime: 3500
+        });
+    </script>
+</block>

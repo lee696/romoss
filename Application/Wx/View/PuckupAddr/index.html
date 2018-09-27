@@ -1,0 +1,61 @@
+<!-- 订单地址列表 -->
+<extend name="Public:base" />
+<block name="main">
+    <div class="header-panel">
+        <a href="javascript:goback()" class="go-back"></a>
+        选择提货点
+    </div>
+    <!--<a class="fixed-bottom-btn to-buy" href="{:U('info')}?redirect={$redirect}">添加新地址</a>-->
+    <div class="page-panel padding-header padding-footer">
+        <div class="addr-box">
+            <ul>
+                <volist name="address_list" id="address">
+                    <li data-id="{$address.address_id}">
+                        <div>
+                            <p class="addr-cont">
+                                <span class="addr-name">{$address.consignee}</span>
+                                <span class="addr-phone">{$address.phone}</span>
+                            </p>
+                            <p class="my-addr-info">{$address.address.prov}{$address.address.city}{$address.address.region}{$address.address.area}</p>
+                        </div>
+                    </li>
+                </volist>
+            </ul>
+            <div class="tishi_bg none">
+                <div><img src="../static/wx/images/tishi_bg.png" /></div>
+                <p>暂无提货点</p>
+            </div>
+        </div>
+    </div>
+</block>
+<block name="js-con">
+    <script>
+       function defaultadd(address_id){
+         $.post("{:U('Addr/defaultadd')}", {address_id: address_id}, function () {
+                doAjax(res, function () {
+                });
+            });
+      }
+        $('.addr-del').click(function () {
+            var $dom = $(this).closest('li');
+            $.post("{:U('del')}", {address_id: $dom.attr('data-id')}, function () {
+                doAjax(res, function () {
+                    $dom.slideUp(function () {
+                        $dom.remove();
+                    });
+                });
+            });
+        });
+        $('.addr-cont, .addr-info').click(function () {
+            var _address_id = $(this).closest('li').attr('data-id');
+            location.href = "{$redirect}&address_id=" + _address_id;
+        });
+
+        if ("{$address}" == "") {
+            $(".tishi_bg").show();
+
+        } else {
+            $(".tishi_bg").hide();
+        }
+    </script>
+</block>

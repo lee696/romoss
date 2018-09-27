@@ -1,0 +1,55 @@
+<extend name="Public:base" />
+<block name="main">
+    <style>
+        body{background: #fff;}
+        .works-box ul{margin-top:12px;margin-top: 3.5rem;}
+        .works-box ul li{display:block;position: relative;margin-bottom:12px;}
+        .works-box ul li div{margin:0;padding:10px 12px;overflow:hidden;background:#F4F5F9;position: relative;}
+        .li-icon{width:100px;height:150px;}
+        .works-cont{margin-left:115px;}
+        .works-icon{display:inline-block;float:left;}
+        .works-title{font-size:16px;display: block;color:#404E58;line-height: 30px;margin-bottom:10px;}
+        .works-bot{display: block;}
+        .works-price{color:#EC2A5C;font-size:16px;position:absolute;bottom:20px;}
+        .works-btn{color:#ddd;font-size:16px;position:absolute;bottom:20px;right:12px;}
+    </style>
+    <div class="works-box">
+        <div class="header-panel">
+            <a href="javascript:goback()" class="go-back"></a>
+            我的作品
+        </div>
+        <ul>
+          <volist name='list' id='vo'>
+         
+            <li data-id="{$vo.id}">
+                <div>
+                    <p class="works-icon"><a href=""><img class="li-icon" src="__WX_IMG__/my-works.jpg"></a></p>
+                    <p class="works-cont">
+                        <span class="works-title">{$vo.name}</span>
+                        <span class="works-bot">
+                            <span class="works-price">￥{$vo.price}</span>
+                            <span class="works-btn works-del-btn">删除</span>
+                        </span>
+                    </p>
+                </div>
+            </li>
+             </volist>
+        </ul>
+    </div>
+</block>
+ <block name="js-con">
+    <script>
+         $('.works-del-btn').click(function () {
+            var $dom = $(this).closest('li');
+            $.post("{:U('del')}", {id: $dom.attr('data-id')}, function () {
+                doAjax(res.data, function () {
+                    $dom.slideUp(function () {
+                        $dom.remove();
+                    });
+                });
+            });
+        });
+       
+    </script>
+    </block>
+

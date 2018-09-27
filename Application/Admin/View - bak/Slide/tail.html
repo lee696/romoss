@@ -1,0 +1,28 @@
+<tr data-id="{$vo.goods_id}" data-order="{$vo.order}">
+    <td class="am-text-middle"><input type="checkbox" class="check-tail"></td>
+    <td class="am-text-middle">
+        <div class="row-line">
+            <div class="img">
+                <img src="{$vo.img}" style="width: 80px;height: 80px;"/>
+            </div>
+            <div class="title">{$vo.title}</div>
+        </div>
+    </td>
+    <td class="am-text-middle">{$vo.link|default='无'}</td>
+    <td class="am-text-middle">{:formatTime($vo['create_price'])}</td>
+    <td class="am-text-middle">{$link}</td>
+    <td class="am-text-middle"><if condition="$vo['is_on'] eq 1">启用<else/>禁用</if></td>
+    <td class="am-text-middle">
+        <div class="am-btn-toolbar">
+            <div class="am-btn-group am-btn-group-xs">
+                <a class="am-btn am-btn-default am-btn-xs" href="{:U('info', ['slide_id' => $vo['slide_id']])}">编辑</a>
+            </div>
+            <div class="am-btn-group am-btn-group-xs">
+                <a class="am-btn am-btn-default am-btn-xs btn-move" data-move="up" href="javascript:">上移</a>
+            </div>
+            <div class="am-btn-group am-btn-group-xs">
+                <a class="am-btn am-btn-default am-btn-xs btn-move" data-move="down" href="javascript:">下移</a>
+            </div>
+        </div>
+    </td>
+</tr>

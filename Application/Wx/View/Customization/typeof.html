@@ -1,0 +1,33 @@
+<extend name="Public:base" />
+<block name="main">
+    <style>
+        .header-panel{position: fixed; width: 100%;left: 0;top: 0; font-size: 1.8rem;text-align: center; color: #fff; height: 4.5rem;line-height: 4.5rem;z-index: 9;}
+        .header-panel a.go-back{position: absolute;width: 1rem;height: 1.65rem;background: url(../static/wx/images/icon-back.png) no-repeat left center;background-size: contain;left: 1.5rem;top: 50%;}
+        .typeof-box {width:100%;overflow:hidden;}
+        .typeof-box ul{padding:0 1rem;}
+        .typeof-box ul li{border-bottom:1px #d7d7d7 solid;font-size: 1.6rem;padding: 1.5rem 0;text-align: center;}
+
+
+    </style>
+    <div class="header-panel">
+        <a href="javascript:goback()" class="go-back"></a>更换型号
+    </div>
+    <div class="typeof-box" style='margin-top: 4.5rem'>
+        <ul>
+            <li>iphone6/6s</li>
+            <li>iphone6Plus/6sPlus</li>
+            <li>iphone7/7s</li>
+            <li>iphone7Plus/7sPlus</li>
+        </ul>
+
+
+    </div>
+</block>
+<block name="js-con">
+    <script>
+        $(function () {
+
+
+        });
+    </script>
+</block>

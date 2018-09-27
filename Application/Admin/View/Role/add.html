@@ -1,0 +1,61 @@
+<extend name="Public:base"/>
+<block name="local-title">
+    <li>
+        <a href="{:U('index')}">添加角色</a>
+    </li>
+    <li><if condition="I('slide_id')">编辑<else/>新增</if></li>
+</block>
+<block name="main">
+    <div class="am-panel am-panel-default am-margin-top">
+        <div class="am-panel-bd">
+            <div class="am-g">
+                <div class="am-u-sm-12">
+                    <form class="J_slide_form am-form am-form-horizontal" method="post" onsubmit="return false;">
+
+                        <div class="am-form-group">
+                            <label for="title" class="am-u-sm-3 am-form-label require">角色名称:</label>
+                            <div class="am-u-sm-6 am-u-md-pull-3">
+                                <input type="text" name="role_name" value= "" id="phone">
+                            </div>
+                        </div>
+                        <div class="am-form-group">
+                            <label for="link" class="am-u-sm-3 am-form-label require">权限分配:</label>
+                            <div class="am-u-sm-6 am-u-md-pull-3">
+                                <input type="checkbox" name="vehicle" value="Bike">I have a bike
+                            </div>
+                        </div>
+                        <div class="am-form-group">
+                            <div class="am-u-sm-9 am-u-sm-push-3">
+                                <input type="submit" class="submit am-btn am-btn-primary" value="提交">
+                                <button type="button" class="cancel-btn am-btn am-btn-primary">取消</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+</block>
+<block name="js-con">
+    <link rel="stylesheet" href="__K_EDITOR__/themes/default/default.css" />
+    <script src="__K_EDITOR__/plugins/code/prettify.js"></script>
+    <script>
+        $('.cancel-btn').click(function () {
+            history.go(-1);
+        });
+        $('.J_slide_form').submit(function(){
+            var $phone = $('#phone').val();
+            var $pwd = $('#pwd').val();
+            var data = {};
+            data.phone = $phone;
+            data.pwd = $pwd;
+            $.post("{:U('add')}", data, function(res){
+                layer.msg(res.content);
+                location.href = "{:U('index')}";
+/*               doAjax(res, function(){
+                       layer.msg('添加成功');
+                   location.href = "{:U('index')}";
+               });*/
+            });
+        });
+    </script>
+</block>

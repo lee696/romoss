@@ -1,0 +1,130 @@
+<extend name="Public:base" />
+<block name="main">
+    <style>
+        .header-panel{position: fixed; width: 100%;left: 0;top: 0; font-size: 1.8rem;text-align: center; color: #fff; height: 4.5rem;line-height: 4.5rem;z-index: 9;}
+        .header-panel a.go-back{position: absolute;width: 1rem;height: 1.65rem;background: url(../static/wx/images/icon-back.png) no-repeat left center;background-size: contain;left: 1.5rem;top: 50%;}
+        .header-panel a.cplt{position: absolute;font-size: 1.5rem;right: 1.5rem;top:0;}
+        .materials-box {width:100%;overflow:hidden; padding-right:1rem}
+        .materials-box .b-left{float: left;width: 29%;}
+        .materials-box .b-left .pic-items{border-bottom: 1px #d7d7d7 solid;height: 8rem;padding: 0.5rem;box-sizing: border-box;}
+        .materials-box .b-left .pic-items .act_bg{background:#31a9ff;}
+        .materials-box .b-left .pic-items div{width: 100%;height: 100%;position: relative;}
+        .materials-box .b-left .pic-items div span{display: block;font-size: 1.7rem;color: #fff;position: absolute;top:1.85rem;left:0;width:100%;text-align: center;}
+        .materials-box .b-left .pic-items div img{width: 100%;height: 100%;position: absolute;top:0;left:0;}
+        .materials-box .b-left .pic-items div i{display: block;position: absolute;right: -0.5rem;top:2.8rem;width: 0;height:0;border-top: 0.7rem solid transparent;border-bottom:0.7rem solid transparent;border-left:0.5rem solid #31a9ff; }
+        .materials-box .b-right{width: 71%;float: right;}
+        .materials-box .b-right ul{width:106%;margin-left: -0.5rem;}
+        .materials-box .b-right ul li{width:29%;height: 10rem;float: left;margin: 0.5rem;position: relative;}
+
+        .materials-box .b-right ul li div{position:absolute;top:0.6rem;right:0.6rem;width: 2rem;height: 2rem;}
+        .materials-box .b-right ul li .act_ico{width:2rem;height: 2rem;background:url(../static/wx/images/select.png) no-repeat;background-size: 100% 100%; }
+        .materials-box .b-right ul li div span{display: block;border: 0.1rem #fff solid;width:100%;height:100%;background:rgba(0,0,0,0.3);border-radius:50%;}
+        .materials-box .b-right ul li img{display: block;width: 100%;height: 100%}
+    </style>
+    <div class="header-panel">
+        <a href="javascript:goback()" class="go-back"></a>贴纸
+        <a href="" class="cplt">完成</a>
+    </div>
+    <div class="materials-box clr" style='margin-top: 4.5rem'>
+        <div class="b-left" id="pic-items">
+          <volist name="type" id="vo" key="k">
+          <div class="pic-items" data-id="{$vo.id}">
+            <div class="act_bg"><if condition="$k eq 1"><img  class="none" src=""/> <i></i> <else /> <img src="{$vo.pic}"/> </if> <span>{$vo.name}</span></div>
+            </div>  
+          </volist>
+            
+<!--            <div class="pic-items">
+                <div><img src="../static/wx/images/test032.png" /><span>美女诱惑</span></div>
+            </div>
+            <div class="pic-items">
+                <div><img src="../static/wx/images/test033.png" /><span>帅哥</span></div>
+            </div>
+            <div class="pic-items">
+                <div><img src="../static/wx/images/test031.png" /><span>明星图片</span></div>
+            </div>-->
+
+        </div>
+        <div class="b-right">
+            <ul id="photos-act" class="clr">
+               <volist name="list" id="vod" key="k">
+                <li><img src="{$vod.pic}"/></li>
+               </volist>
+<!--                <li>
+                    <img src="../static/wx/images/test017.png" />
+                </li>
+                <li>
+                    <img src="../static/wx/images/test018.png" />
+                </li>
+                <li>
+                    <img src="../static/wx/images/test019.png" />
+                </li>
+                <li>
+                    <img src="../static/wx/images/test020.png" />
+                </li>
+                <li>
+                    <img src="../static/wx/images/test021.png" />
+                </li>
+                <li>
+                    <img src="../static/wx/images/test022.png" />
+                </li>
+                <li>
+                    <img src="../static/wx/images/test023.png" />
+                </li>
+                <li>
+                    <img src="../static/wx/images/test024.png" />
+                </li>
+                <li>
+                    <img src="../static/wx/images/test025.png" />
+                </li>
+                <li>
+                    <img src="../static/wx/images/test026.png" />
+                </li>
+                <li>
+                    <img src="../static/wx/images/test027.png" />
+                </li>
+                <li>
+                    <img src="../static/wx/images/test028.png" />
+                </li>
+                <li>
+                    <img src="../static/wx/images/test029.png" />
+                </li>
+                <li>
+                    <img src="../static/wx/images/test030.png" />
+                </li>-->
+
+            </ul>
+        </div>
+
+    </div>
+</block>
+<block name="js-con">
+    <script>
+        $(function () {
+            $("#photos-act li").click(function () {
+                var act = $(this).children("div")[0];
+                if (act.attr("class") != "act_ico") {
+                    var it = $(this);
+                    act.addClass("act_ico");
+                }
+            });
+            
+              $("#pic-items>div").click(function () {
+                var index = $(this).attr('data-id');
+                
+                   $.post("{:U('Customization/sticker')}", {pid: index}, function (res) {
+                doAjax(res, function () {
+           $("#photos-act").empty();
+          for(var i=0;i<res.data.length;i++){
+            $("#photos-act").append("<li><img src='"+res.data[i].pic+"' /></li>");
+          }
+//					alert('创建订单成功,等待微信商户授权后正式支付！');
+//					location.href = "{:U('Order/paytype')}?oid="+res.data;
+                    //layer.msg('启动支付接口失败...');
+                });
+            });
+            });
+
+        });
+        
+    </script>
+</block>

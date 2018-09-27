@@ -1,0 +1,72 @@
+<extend name="Public:base" />
+<block name="main">
+    <include file="Public:footer" current="member"/>
+    <div class="member-box">
+        <div class="userinfo">
+            <div class="avatar userbg">
+                <a href="{:U('info')}">
+                    <!--<img src="__WX_IMG__/logo.png" alt="罗马仕" title="罗马仕"/>-->
+                    <img src="{$user_info.avatar}" alt="{$user_info.nickname}" title="{$user_info.nickname}"
+                         onerror="javascript:this.src='__WX_IMG__/default_avatar.png'"/>
+                </a>
+                <a href="{:U('info')}">
+                    <p>{$user_info.nickname}</p>
+                </a>
+                <a href="{:U('info')}">
+                    <span>帐号：{$user_info.user_id}</span>
+                </a>
+            </div>
+            <a class="user-message" href="{:U('Message/index')}"><i src="__WX_IMG__/icon-message.png" ></i></a>
+        </div>
+        <div class='col order'>
+            <a href="{:U('Order/index?type=0')}">
+                我的订单
+                <i>查看全部订单&nbsp;&nbsp;&nbsp;<i class='ico-right' style='background-size: 6px;'></i></i>
+            </a>
+        </div>
+        <div class='order-rows'>
+            <ul>
+                <li>
+                    <a href="{:U('Order/index?type=1')}"><i class='icon-bar'></i><span>待付款</span></a>
+                </li>
+                <li>
+                    <a href="{:U('Order/index?type=2')}"><i class='icon-cat'></i><span>待收货</span></a>
+                </li>
+                <li>
+                    <a href="{:U('Order/index?type=4')}"><i class='icon-pj'></i><span>待评价</span></a>
+                </li>
+                <li>
+                    <a href="{:U('Order/index?type=6')}"><i class='icon-ok2' ></i><span>已完成</span></a>
+                </li>
+            </ul>
+        </div>
+        <div class='col' rel="{:U('Addr/index')}">
+            <a>
+                我的地址<i class='ico-right'></i>
+            </a>
+        </div>
+        <div class='col' rel="{:U('Works/index')}">
+            <a>
+                我的作品<i class='ico-right'></i>
+            </a>
+        </div>
+        <div class='col' style='margin-bottom: 5rem;'>
+            <a href="{:U('Seting/setting')}">
+                设置<i class='ico-right'></i>
+            </a>
+        </div>
+    </div>
+</block>
+<block name="js-con">
+    <script>
+        $(function () {
+            goToNav();
+
+            function goToNav() {
+                $('.member-box .col').click(function () {
+                    location.href = $(this).attr('rel');
+                });
+            }
+        });
+    </script>
+</block>
